@@ -1124,6 +1124,9 @@
     .service-card-inner { padding: 32px 22px; }
     .process { padding: 100px 24px; }
     .process-inner { grid-template-columns: 1fr; gap: 60px; }
+    .featured-look { padding: 100px 24px 112px; }
+    .featured-look-grid { grid-template-columns: 1fr; gap: 24px; }
+    .featured-look-card { min-height: 440px; }
     .testimonials { padding: 100px 24px; }
     .testi-grid { grid-template-columns: 1fr; }
     .testi-inner { padding: 32px 22px; }
@@ -1157,6 +1160,27 @@
     gap: 60px;
     align-items: end;
     margin-bottom: 72px;
+  }
+  .featured-look {
+    padding: 120px 80px 140px;
+    background: rgba(15,10,7,0.98);
+    border-top: 1px solid rgba(181,104,74,0.12);
+    border-bottom: 1px solid rgba(181,104,74,0.08);
+  }
+  .featured-look-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 28px;
+    align-items: center;
+  }
+  .featured-look-copy {
+    max-width: 520px;
+  }
+  .featured-look-card {
+    min-height: 620px;
+  }
+  .featured-look-card .garment-img {
+    object-position: center top;
   }
   .gallery-header-right {
     display: flex;
@@ -1608,7 +1632,7 @@
     <li><a href="#philosophy">Philosophy</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
-    <li><a href="#bridal">Bridal</a></li><li><a href="#senator">Senator</a></li><li><a href="#suits">Suits</a></li><li><a href="#testimonials">Stories</a></li>
+    <li><a href="#bridal">Bridal</a></li><li><a href="#new-gowns">New Gowns</a></li><li><a href="#senator">Senator</a></li><li><a href="#suits">Suits</a></li><li><a href="#testimonials">Stories</a></li>
     <li><a href="#contact" class="nav-cta">Book a Consultation</a></li>
   </ul>
 </nav>
@@ -1669,6 +1693,30 @@
     </div>
   </div>
 </section>
+
+<div class="featured-look" id="lookbook" aria-label="Featured looks">
+  <div class="gallery-header">
+    <div>
+      <div class="section-label reveal">First Look</div>
+      <h2 class="section-h2 reveal reveal-delay-1">The atelier is clear<br>from the first frame.</h2>
+    </div>
+    <p class="section-body reveal reveal-delay-2" style="margin: 0; align-self: end;">The opening image now shows the kind of work Mimi's Stitches makes: bridal, formal, and custom-tailored pieces that tell you exactly what this site is about.</p>
+  </div>
+
+  <div class="featured-look-grid">
+    <div class="featured-look-copy reveal">
+      <p class="section-body" style="margin: 0;">The opening statement reveals our craft — luminous elegance leading, sophisticated depth following. Each composition crafted to command attention while revealing the artistry within.</p>
+    </div>
+    <div class="garment-card bridal-card-main featured-look-card reveal reveal-delay-1">
+      <img class="garment-img" src="assets/mimis-stitches-early-bridal-pair.jpg" alt="White bridal gown and groom's tuxedo set styled as a matching formal pair — Mimi's Stitches" loading="eager"/>
+      <div class="garment-caption">
+        <span class="garment-tag">First Look · Bridal & Formal</span>
+        <span class="garment-name">The Atelier Pair</span>
+        <a href="#bridal" class="garment-link">See the collection ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- MARQUEE -->
 <div class="marquee-section" aria-hidden="true">
@@ -2010,6 +2058,54 @@
   </div>
 </section>
 
+<!-- NEW GOWNS COLLECTION -->
+<section class="gallery-section" id="new-gowns" aria-label="New Gowns Collection">
+  <div class="gallery-header">
+    <div>
+      <div class="section-label reveal">New Gowns</div>
+      <h2 class="section-h2 reveal reveal-delay-1">Recent<br>additions to<br>the <em>collection.</em></h2>
+    </div>
+    <div class="gallery-header-right reveal reveal-delay-2">
+      <p class="section-body" style="text-align:right; max-width:360px; margin:0;">These exquisite pieces showcase the evolving artistry of our atelier, each gown representing new inspirations and refined techniques.</p>
+    </div>
+  </div>
+
+  <div class="bridal-grid">
+    <div class="garment-card bridal-card-main reveal">
+      <img class="garment-img" src="assets/Chic Blue evening dresses long lace Prom dresses.jpg" alt="Chic blue lace prom gown with elegant detailing — Mimi's Stitches" loading="lazy"/>
+      <div class="garment-caption">
+        <span class="garment-tag">New Collection · Evening Gown</span>
+        <span class="garment-name">The Azure Elegance</span>
+        <a href="#contact" class="garment-link">Enquire about this piece ↗</a>
+      </div>
+    </div>
+    <div class="garment-card bridal-card-sm reveal reveal-delay-1">
+      <img class="garment-img" src="assets/Elegant Navy Blue O-Neck Sequined Appliques Long Sleeves Quinceanera Evening Dress Ball Gown Floor Length Princess Prom Dress - US 16 _ Custom Color(Special instructions for seller).jpg" alt="Navy blue sequined ball gown with long sleeves and appliqué details — Mimi's Stitches" loading="lazy"/>
+      <div class="garment-caption">
+        <span class="garment-tag">New Collection · Ball Gown</span>
+        <span class="garment-name">The Royal Sapphire</span>
+        <a href="#contact" class="garment-link">Enquire ↗</a>
+      </div>
+    </div>
+    <div class="garment-card bridal-card-sm reveal reveal-delay-2">
+      <img class="garment-img" src="assets/Rare-008 Blue - Etsy.jpg" alt="Elegant blue gown with sophisticated design — Mimi's Stitches" loading="lazy"/>
+      <div class="garment-caption">
+        <span class="garment-tag">New Collection · Signature</span>
+        <span class="garment-name">The Ocean Whisper</span>
+        <a href="#contact" class="garment-link">Enquire ↗</a>
+      </div>
+    </div>
+    <div class="garment-card bridal-card-sm reveal reveal-delay-3">
+      <img class="garment-img" src="assets/Luxury stitched with love 🤍.jpg" alt="Luxury gown with elegant craftsmanship — Mimi's Stitches" loading="lazy"/>
+      <div class="garment-caption">
+        <span class="garment-tag">New Collection · Featured</span>
+        <span class="garment-name">The Love Stitch</span>
+        <a href="#contact" class="garment-link">Enquire ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- MEN'S SUITS GALLERY -->
 <section class="gallery-section" id="suits" aria-label="Men's Bespoke Suits Collection">
   <div class="gallery-header">
@@ -2040,11 +2136,11 @@
       </div>
     </div>
     <div class="garment-card suits-card suits-card-feature reveal reveal-delay-2">
-      <img class="garment-img" src="assets/mimis-stitches-758b09d287fe.jpg" alt="Chocolate brown pinstripe double breasted suit — Mimi's Stitches luxury tailoring" loading="lazy"/>
+      <img class="garment-img" src="assets/mimis-stitches-black-tie-pair.jpg" alt="Black evening gown and tuxedo set with gold embroidery — Mimi's Stitches formal wear" loading="lazy"/>
       <div class="garment-caption">
         <span class="garment-tag">Bespoke Suits · Feature</span>
-        <span class="garment-name">The Pinstripe Authority</span>
-        <a href="#contact" class="garment-link">Commission this piece ↗</a>
+        <span class="garment-name">The Midnight Pair</span>
+        <a href="#contact" class="garment-link">Commission this look ↗</a>
       </div>
     </div>
   </div>
