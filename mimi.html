@@ -1,0 +1,2360 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mimi's Stitches | Bespoke Tailoring &amp; Couture Design</title>
+<meta content="Mimi's Stitches — a luxury bespoke tailoring atelier. Couture bridal gowns, bespoke suits, senator wear, and custom design. Where every stitch is a signature." name="description"/>
+<meta content="bespoke tailoring, luxury couture, bridal gowns, custom suits, senator wear, African fashion, Mimi's Stitches" name="keywords"/>
+<meta content="Mimi's Stitches | Bespoke Tailoring &amp; Couture Design" property="og:title"/>
+<meta content="Luxury bespoke tailoring and couture design. Where every stitch is a signature." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&amp;family=Cinzel:wght@400;500;600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════
+   DESIGN SYSTEM — MIMI'S STITCHES v2.0
+   Vibe: Editorial Luxury | Dials: 9/8/3
+═══════════════════════════════════════════════ */
+:root {
+  --rg:       #B5684A;
+  --rg-light: #D9956A;
+  --rg-pale:  #F5E6DC;
+  --rg-dark:  #7A3D22;
+  --espresso: #2C1508;
+  --charcoal: #1A1210;
+  --void:     #0A0604;
+  --cream:    #FAF6F2;
+  --cream-dim:#E8DDD6;
+  --muted:    rgba(56, 36, 28, 0.4);
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --caps:  'Cinzel', serif;
+  --sans:  'Outfit', system-ui, sans-serif;
+
+  --ease-lux:    cubic-bezier(0.32,0.72,0,1);
+  --ease-reveal: cubic-bezier(0.22,1,0.36,1);
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--void);
+  color:var(--cream);
+  font-family:var(--sans);
+  font-weight:300;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* ── GRAIN ── */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:9000;
+  opacity:0.5;
+}
+
+/* ── CURSOR ── */
+.cursor{position:fixed;width:7px;height:7px;background:var(--rg);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s var(--ease-lux),height .3s var(--ease-lux),background .3s;}
+.cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(181,104,74,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .5s var(--ease-lux),height .5s var(--ease-lux),border-color .3s;}
+.cursor.expand{width:48px;height:48px;background:rgba(181,104,74,.15);border:1px solid var(--rg);}
+.cursor-ring.expand{width:64px;height:64px;border-color:var(--rg-light);}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{
+  position:fixed;top:0;left:0;height:1px;
+  background:linear-gradient(to right,var(--rg-dark),var(--rg),var(--rg-light));
+  z-index:9997;width:0%;
+  transition:width .1s linear;
+}
+
+/* ═══ NAV ═══ */
+nav{
+  position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  z-index:1000;display:flex;align-items:center;
+  background:rgba(10,6,4,.72);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border:1px solid rgba(181,104,74,.16);
+  border-radius:100px;padding:7px 8px 7px 20px;
+  width:max-content;max-width:calc(100vw - 32px);
+  transition:background .4s var(--ease-lux),border-color .4s;
+  box-shadow:0 8px 40px rgba(0,0,0,.4),inset 0 1px 0 rgba(181,104,74,.08);
+}
+nav.scrolled{background:rgba(6,3,2,.9);border-color:rgba(181,104,74,.25);}
+.nav-logo-wrap{display:flex;align-items:center;text-decoration:none;margin-right:24px;flex-shrink:0;}
+.nav-logo{height:38px;width:auto;display:block;}
+.nav-links{display:flex;gap:0;align-items:center;list-style:none;}
+.nav-links a{
+  font-family:var(--sans);font-size:11.5px;font-weight:400;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(250,246,242,.55);text-decoration:none;
+  transition:color .3s var(--ease-lux);
+  padding:8px 14px;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--rg-light);}
+.nav-cta{
+  margin-left:10px;
+  background:var(--rg);color:var(--void)!important;
+  padding:9px 20px!important;border-radius:100px;
+  font-weight:500!important;letter-spacing:.14em!important;
+  transition:background .35s var(--ease-lux),transform .35s var(--ease-spring)!important;
+  border:none;cursor:none;font-family:var(--caps)!important;font-size:10px!important;
+}
+.nav-cta:hover{background:var(--rg-light)!important;transform:scale(1.04)!important;}
+
+/* Mobile nav toggle */
+.nav-toggle{
+  display:none;width:36px;height:36px;
+  border:1px solid rgba(181,104,74,.3);border-radius:50%;
+  background:transparent;cursor:none;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  margin-left:12px;
+}
+.nav-toggle span{width:16px;height:1px;background:var(--rg-light);display:block;transition:all .4s var(--ease-lux);}
+.nav-toggle.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);}
+.nav-toggle.open span:nth-child(2){opacity:0;transform:translateX(-8px);}
+.nav-toggle.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);}
+
+/* Mobile nav overlay */
+.mobile-nav{
+  position:fixed;inset:0;
+  background:rgba(6,3,2,.97);
+  backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);
+  z-index:998;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:0;
+  opacity:0;pointer-events:none;
+  transition:opacity .5s var(--ease-lux);
+}
+.mobile-nav.open{opacity:1;pointer-events:all;}
+.mobile-nav a{
+  font-family:var(--serif);font-size:clamp(32px,8vw,52px);
+  font-style:italic;font-weight:300;color:rgba(250,246,242,.5);
+  text-decoration:none;padding:16px 0;
+  transition:color .3s var(--ease-lux),transform .3s var(--ease-lux);
+  transform:translateY(20px);opacity:0;
+}
+.mobile-nav.open a{transform:translateY(0);opacity:1;}
+.mobile-nav a:nth-child(1){transition-delay:.1s;}
+.mobile-nav a:nth-child(2){transition-delay:.17s;}
+.mobile-nav a:nth-child(3){transition-delay:.24s;}
+.mobile-nav a:nth-child(4){transition-delay:.31s;}
+.mobile-nav a:nth-child(5){transition-delay:.38s;}
+.mobile-nav a:nth-child(6){transition-delay:.45s;}
+.mobile-nav a:nth-child(7){transition-delay:.52s;}
+.mobile-nav a:hover{color:var(--rg-light);transform:translateX(8px);}
+
+/* ═══ HERO ═══ */
+.hero{
+  min-height:100dvh;display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero-ambience{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(181,104,74,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(122,61,34,.08) 0%, transparent 50%);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(181,104,74,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(181,104,74,.04) 1px, transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;
+}
+.hero-vline{
+  position:absolute;top:0;left:50%;width:1px;height:100%;
+  background:linear-gradient(to bottom,transparent,rgba(181,104,74,.18) 30%,rgba(181,104,74,.18) 70%,transparent);
+}
+.hero-left{
+  padding:160px 56px 120px 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:1;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--caps);font-size:9.5px;letter-spacing:.28em;
+  color:var(--rg);text-transform:uppercase;margin-bottom:40px;
+  animation:fadeUp .9s var(--ease-reveal) .2s both;
+}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--rg);}
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(60px,6.8vw,104px);
+  font-weight:300;line-height:.94;
+  letter-spacing:-.025em;color:var(--cream);
+  margin-bottom:16px;
+  animation:fadeUp .9s var(--ease-reveal) .35s both;
+}
+.hero-h1 em{font-style:italic;color:var(--rg-light);}
+.hero-sub{
+  font-family:var(--serif);
+  font-size:clamp(20px,2.2vw,30px);
+  font-weight:300;font-style:italic;
+  color:rgba(250,246,242,.45);line-height:1.3;
+  margin-bottom:52px;
+  animation:fadeUp .9s var(--ease-reveal) .45s both;
+}
+.hero-desc{
+  font-size:15px;line-height:1.85;
+  color:rgba(250,246,242,.5);max-width:420px;
+  margin-bottom:56px;
+  animation:fadeUp .9s var(--ease-reveal) .55s both;
+}
+.btn-row{
+  display:flex;gap:16px;align-items:center;
+  animation:fadeUp .9s var(--ease-reveal) .65s both;
+}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--rg);color:var(--void);text-decoration:none;
+  font-family:var(--caps);font-size:10px;
+  letter-spacing:.22em;text-transform:uppercase;
+  padding:17px 24px 17px 30px;border-radius:100px;
+  transition:all .5s var(--ease-lux);border:none;cursor:none;
+  box-shadow:0 4px 24px rgba(181,104,74,.3);
+}
+.btn-primary:hover{background:var(--rg-light);transform:translateY(-2px);box-shadow:0 8px 40px rgba(181,104,74,.45);}
+.btn-icon{
+  width:30px;height:30px;background:rgba(10,6,4,.2);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:13px;transition:transform .4s var(--ease-spring);
+}
+.btn-primary:hover .btn-icon{transform:translate(2px,-2px) scale(1.1);}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  color:rgba(250,246,242,.5);text-decoration:none;
+  font-size:13px;font-weight:300;letter-spacing:.06em;
+  transition:color .3s var(--ease-lux);cursor:none;
+  background:none;border:none;
+}
+.btn-ghost:hover{color:var(--rg-light);}
+
+/* Hero right */
+.hero-right{
+  position:relative;height:100dvh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;width:100%;
+}
+.hero-visual{
+  position:relative;
+  width:min(420px,88%);height:min(560px,85dvh);
+}
+.hero-frame-outer{
+  position:absolute;inset:0;
+  border:1px solid rgba(181,104,74,.22);
+  border-radius:200px 200px 180px 180px;
+  background:rgba(181,104,74,.03);
+}
+.hero-frame-inner{
+  position:absolute;inset:12px;
+  border:1px solid rgba(181,104,74,.1);
+  border-radius:190px 190px 168px 168px;
+  overflow:hidden;
+  background:linear-gradient(160deg,rgba(44,21,8,.7) 0%,rgba(122,61,34,.12) 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-logo-img{
+  width:76%;max-width:340px;height:auto;
+  display:block;margin:0 auto;
+  filter:drop-shadow(0 0 48px rgba(181,104,74,.28));
+  animation:logoPulse 6s ease-in-out infinite, fadeUp 1.2s var(--ease-reveal) .4s both;
+}
+.hero-badge{
+  position:absolute;top:40px;right:-18px;
+  background:var(--rg);color:var(--void);
+  font-family:var(--caps);font-size:8.5px;
+  letter-spacing:.22em;padding:11px 14px;
+  border-radius:10px;writing-mode:vertical-lr;
+  text-orientation:mixed;transform:rotate(180deg);
+  animation:float 4s ease-in-out infinite;
+}
+.hero-circle-svg{
+  position:absolute;bottom:56px;left:-28px;
+  width:108px;height:108px;
+  animation:spin 22s linear infinite;
+}
+.hero-circle-svg text{
+  font-family:var(--caps);font-size:8.5px;
+  letter-spacing:.18em;fill:rgba(181,104,74,.5);
+}
+.circle-center{
+  position:absolute;bottom:56px;left:-28px;
+  width:108px;height:108px;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+.circle-dot{width:5px;height:5px;background:var(--rg);border-radius:50%;}
+.hero-stat{position:absolute;bottom:36px;right:16px;text-align:right;}
+.hero-stat-num{font-family:var(--serif);font-size:48px;font-weight:300;color:var(--rg-light);line-height:1;display:block;}
+.hero-stat-label{font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,246,242,.3);}
+.hero-scroll{
+  position:absolute;bottom:36px;left:80px;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  animation:fadeUp 1s var(--ease-reveal) 1.2s both;
+}
+.scroll-line{width:1px;height:56px;background:linear-gradient(to bottom,var(--rg),transparent);animation:scrollPulse 2.2s ease-in-out infinite;}
+.scroll-text{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,246,242,.28);writing-mode:vertical-lr;}
+
+/* ═══ MARQUEE ═══ */
+.marquee-wrap{
+  border-top:1px solid rgba(181,104,74,.1);
+  border-bottom:1px solid rgba(181,104,74,.1);
+  padding:20px 0;overflow:hidden;
+  background:rgba(181,104,74,.025);
+}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;white-space:nowrap;}
+.marquee-item{
+  display:inline-flex;align-items:center;gap:28px;padding:0 28px;
+  font-family:var(--caps);font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(181,104,74,.5);
+}
+.marquee-dot{width:3px;height:3px;background:rgba(181,104,74,.4);border-radius:50%;flex-shrink:0;}
+
+/* ═══ SHARED SECTION STYLES ═══ */
+.section-label{
+  font-family:var(--caps);font-size:9.5px;letter-spacing:.28em;
+  color:var(--rg);text-transform:uppercase;margin-bottom:36px;
+  display:flex;align-items:center;gap:14px;
+}
+.section-label::after{content:'';flex:1;height:1px;max-width:56px;background:var(--rg);opacity:.38;}
+.section-h2{
+  font-family:var(--serif);
+  font-size:clamp(38px,4vw,62px);font-weight:300;
+  line-height:1.06;color:var(--cream);letter-spacing:-.015em;margin-bottom:32px;
+}
+.section-h2 em{font-style:italic;color:var(--rg-light);}
+.section-body{font-size:15px;line-height:1.88;color:rgba(250,246,242,.5);}
+
+/* ═══ PHILOSOPHY ═══ */
+.philosophy{
+  padding:160px 80px;
+  display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;
+  border-top:1px solid rgba(181,104,74,.1);
+}
+.pillar{
+  padding:30px 0;border-bottom:1px solid rgba(181,104,74,.08);
+  display:grid;grid-template-columns:52px 1fr;gap:20px;align-items:start;
+  transition:all .4s var(--ease-lux);cursor:default;
+}
+.pillar:first-child{border-top:1px solid rgba(181,104,74,.08);}
+.pillar:hover{background:rgba(181,104,74,.04);padding-left:14px;padding-right:14px;border-radius:10px;}
+.pillar-num{font-family:var(--serif);font-size:34px;font-weight:300;color:rgba(181,104,74,.18);line-height:1;margin-top:4px;}
+.pillar h3{font-family:var(--caps);font-size:12.5px;letter-spacing:.16em;color:var(--cream);margin-bottom:10px;font-weight:500;}
+.pillar p{font-size:13.5px;line-height:1.75;color:rgba(250,246,242,.42);}
+
+/* ═══ FOUNDER STORY ═══ */
+.founder{
+  padding:160px 80px;
+  background:rgba(181,104,74,.025);
+  border-top:1px solid rgba(181,104,74,.1);
+  border-bottom:1px solid rgba(181,104,74,.08);
+  overflow:hidden;
+  position:relative;
+}
+.founder-bg-letter{
+  position:absolute;top:-40px;right:-20px;
+  font-family:var(--serif);font-size:clamp(280px,30vw,440px);
+  font-weight:300;color:rgba(181,104,74,.04);
+  line-height:1;user-select:none;pointer-events:none;
+  letter-spacing:-.05em;
+}
+.founder-grid{
+  display:grid;grid-template-columns:1fr 1.1fr;
+  gap:100px;align-items:center;position:relative;z-index:1;
+}
+.founder-portrait-wrap{
+  position:relative;
+}
+.founder-portrait-frame{
+  position:relative;
+  border-radius:140px 140px 100px 100px;
+  overflow:hidden;
+  background:linear-gradient(160deg,rgba(44,21,8,.9),rgba(122,61,34,.2));
+  border:1px solid rgba(181,104,74,.2);
+  aspect-ratio:3/4;
+  display:flex;align-items:center;justify-content:center;
+}
+.founder-portrait-placeholder{
+  font-family:var(--serif);font-size:clamp(80px,12vw,140px);
+  font-style:italic;font-weight:300;color:rgba(181,104,74,.15);
+  user-select:none;
+}
+.founder-portrait-accent{
+  position:absolute;bottom:-20px;right:-20px;
+  width:120px;height:120px;
+  border:1px solid rgba(181,104,74,.25);
+  border-radius:50%;
+}
+.founder-portrait-accent-2{
+  position:absolute;top:-12px;left:-12px;
+  width:80px;height:80px;
+  border:1px solid rgba(181,104,74,.15);
+  border-radius:50%;
+}
+.founder-content{}
+.founder-name-treatment{
+  font-family:var(--serif);
+  font-size:clamp(44px,5vw,76px);
+  font-style:italic;font-weight:300;
+  color:var(--rg-light);line-height:1;
+  margin-bottom:6px;letter-spacing:-.01em;
+}
+.founder-title{
+  font-family:var(--caps);font-size:9px;
+  letter-spacing:.32em;color:rgba(181,104,74,.55);
+  text-transform:uppercase;margin-bottom:40px;
+  display:flex;align-items:center;gap:14px;
+}
+.founder-title::before{content:'';width:28px;height:1px;background:rgba(181,104,74,.4);}
+.founder-story{
+  font-family:var(--serif);font-size:19px;
+  font-weight:300;line-height:1.8;
+  color:rgba(250,246,242,.72);margin-bottom:28px;
+  font-style:italic;
+}
+.founder-body{
+  font-size:14.5px;line-height:1.85;
+  color:rgba(250,246,242,.48);margin-bottom:36px;
+}
+.founder-signature{
+  font-family:var(--serif);font-size:36px;
+  font-style:italic;font-weight:300;
+  color:var(--rg);letter-spacing:.02em;
+  border-top:1px solid rgba(181,104,74,.15);
+  padding-top:24px;display:inline-block;
+}
+
+/* ═══ STATS ═══ */
+.stats{
+  padding:100px 80px;
+  border-top:1px solid rgba(181,104,74,.1);
+  border-bottom:1px solid rgba(181,104,74,.1);
+}
+.stats-inner{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2px;
+}
+.stat-card{
+  padding:2px;
+  background:rgba(181,104,74,.06);
+  border-radius:20px;
+  transition:background .4s var(--ease-lux);
+}
+.stat-card:hover{background:rgba(181,104,74,.16);}
+.stat-inner{
+  background:rgba(10,6,4,.9);border-radius:18px;
+  padding:44px 36px;text-align:center;
+  position:relative;overflow:hidden;
+  height:100%;
+}
+.stat-inner::before{
+  content:'';position:absolute;
+  bottom:-30px;left:50%;transform:translateX(-50%);
+  width:100px;height:100px;
+  background:radial-gradient(circle,rgba(181,104,74,.1),transparent 70%);
+  pointer-events:none;
+}
+.stat-num{
+  font-family:var(--serif);font-size:clamp(52px,5vw,76px);
+  font-weight:300;color:var(--rg-light);
+  line-height:1;display:block;margin-bottom:8px;
+  letter-spacing:-.02em;
+}
+.stat-suffix{font-size:.6em;color:var(--rg);}
+.stat-label{
+  font-family:var(--caps);font-size:9px;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(250,246,242,.35);display:block;
+  margin-bottom:12px;
+}
+.stat-desc{
+  font-size:12.5px;line-height:1.6;
+  color:rgba(250,246,242,.28);
+}
+
+/* ═══ SERVICES ═══ */
+.services{
+  padding:160px 80px;
+  border-top:1px solid rgba(181,104,74,.1);
+}
+.services-header{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:end;margin-bottom:72px;
+}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+}
+.svc-card{
+  padding:2px;background:rgba(181,104,74,.07);
+  border-radius:22px;
+  transition:background .5s var(--ease-lux);cursor:none;
+}
+.svc-card:hover{background:rgba(181,104,74,.22);}
+.svc-card.featured{background:linear-gradient(135deg,rgba(181,104,74,.35),rgba(181,104,74,.12));}
+.svc-inner{
+  background:rgba(10,6,4,.95);border-radius:20px;
+  padding:40px 32px;height:100%;min-height:320px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;
+  transition:transform .5s var(--ease-lux);
+}
+.svc-card:hover .svc-inner{transform:translateY(-4px);}
+.svc-icon{
+  width:48px;height:48px;
+  border:1px solid rgba(181,104,74,.28);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:20px;
+  color:var(--rg-light);margin-bottom:28px;
+}
+.svc-title{font-family:var(--caps);font-size:13px;letter-spacing:.14em;color:var(--cream);margin-bottom:14px;font-weight:500;}
+.svc-desc{font-size:13.5px;line-height:1.75;color:rgba(250,246,242,.42);flex:1;}
+.svc-link{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:11.5px;letter-spacing:.1em;
+  color:var(--rg);text-decoration:none;margin-top:28px;
+  transition:gap .3s var(--ease-lux),color .3s;
+}
+.svc-link:hover{gap:12px;color:var(--rg-light);}
+.svc-bg{
+  position:absolute;bottom:-36px;right:-14px;
+  font-family:var(--serif);font-size:110px;
+  font-weight:300;color:rgba(181,104,74,.04);
+  line-height:1;user-select:none;pointer-events:none;
+}
+
+/* ═══ ATELIER EXPERIENCE ═══ */
+.atelier{
+  padding:160px 80px;
+  background:rgba(181,104,74,.02);
+  border-top:1px solid rgba(181,104,74,.1);
+  position:relative;overflow:hidden;
+}
+.atelier-header{text-align:center;margin-bottom:80px;}
+.atelier-header .section-label{justify-content:center;}
+.atelier-header .section-label::after{display:none;}
+.atelier-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:60px;align-items:center;
+  margin-bottom:80px;
+}
+.atelier-visual{
+  position:relative;
+  border-radius:28px;overflow:hidden;
+  background:linear-gradient(160deg,rgba(44,21,8,.9),rgba(122,61,34,.15));
+  border:1px solid rgba(181,104,74,.18);
+  aspect-ratio:4/3;
+  display:flex;align-items:center;justify-content:center;
+}
+.atelier-placeholder{
+  font-family:var(--serif);font-size:clamp(60px,8vw,100px);
+  font-style:italic;font-weight:300;color:rgba(181,104,74,.12);
+  user-select:none;text-align:center;line-height:1.2;
+}
+.atelier-tag{
+  position:absolute;bottom:24px;left:24px;
+  background:rgba(10,6,4,.85);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(181,104,74,.2);border-radius:100px;
+  padding:9px 18px;
+  font-family:var(--caps);font-size:9px;
+  letter-spacing:.2em;color:var(--rg-light);
+}
+.atelier-content{}
+.atelier-quote{
+  font-family:var(--serif);font-size:clamp(22px,2.5vw,32px);
+  font-style:italic;font-weight:300;line-height:1.5;
+  color:var(--cream);margin-bottom:32px;
+  border-left:2px solid var(--rg);padding-left:24px;
+}
+.atelier-features{
+  display:flex;flex-direction:column;gap:0;
+}
+.atelier-feat{
+  display:grid;grid-template-columns:32px 1fr;gap:16px;
+  padding:18px 0;border-bottom:1px solid rgba(181,104,74,.08);
+  align-items:center;
+}
+.atelier-feat:first-child{border-top:1px solid rgba(181,104,74,.08);}
+.feat-dot{
+  width:8px;height:8px;
+  border:1px solid var(--rg);border-radius:50%;
+  background:var(--void);margin:auto;
+}
+.feat-text{font-size:14px;line-height:1.6;color:rgba(250,246,242,.55);}
+.feat-text strong{color:var(--cream);font-weight:400;font-family:var(--caps);font-size:11px;letter-spacing:.1em;display:block;margin-bottom:3px;}
+
+/* Client journey timeline */
+.journey-timeline{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  gap:0;position:relative;margin-top:60px;
+}
+.journey-timeline::before{
+  content:'';position:absolute;
+  top:28px;left:5%;right:5%;height:1px;
+  background:linear-gradient(to right,transparent,rgba(181,104,74,.3) 20%,rgba(181,104,74,.3) 80%,transparent);
+}
+.journey-step{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding:0 12px;
+  position:relative;
+}
+.journey-node{
+  width:56px;height:56px;
+  border:1px solid rgba(181,104,74,.35);border-radius:50%;
+  background:var(--void);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:20px;font-weight:300;
+  color:var(--rg-light);margin-bottom:20px;
+  transition:all .4s var(--ease-lux);position:relative;z-index:1;
+}
+.journey-step:hover .journey-node{
+  background:rgba(181,104,74,.12);
+  border-color:var(--rg);
+  transform:scale(1.1);
+  box-shadow:0 0 24px rgba(181,104,74,.2);
+}
+.journey-step-title{
+  font-family:var(--caps);font-size:9.5px;
+  letter-spacing:.18em;color:var(--cream);
+  text-transform:uppercase;margin-bottom:8px;font-weight:500;
+}
+.journey-step-desc{
+  font-size:12px;line-height:1.6;
+  color:rgba(250,246,242,.38);
+}
+.journey-arrow{
+  position:absolute;top:20px;right:-8px;
+  font-size:14px;color:rgba(181,104,74,.35);z-index:2;
+}
+
+/* ═══ PROCESS ═══ */
+.process{
+  padding:160px 80px;
+  border-top:1px solid rgba(181,104,74,.1);
+}
+.process-inner{
+  display:grid;grid-template-columns:1fr 2fr;
+  gap:100px;align-items:start;
+}
+.process-steps{display:flex;flex-direction:column;gap:0;margin-top:20px;}
+.step{
+  display:grid;grid-template-columns:48px 1fr;gap:20px;
+  padding:32px 0;border-bottom:1px solid rgba(181,104,74,.07);
+  position:relative;transition:all .4s var(--ease-lux);
+}
+.step:first-child{border-top:1px solid rgba(181,104,74,.07);}
+.step:hover{background:rgba(181,104,74,.03);padding-left:12px;padding-right:12px;border-radius:10px;}
+.step-dot{
+  width:7px;height:7px;border:1px solid var(--rg);
+  border-radius:50%;background:var(--void);
+  position:absolute;left:19px;top:34px;z-index:1;
+  transition:all .4s var(--ease-lux);
+}
+.step:hover .step-dot{background:var(--rg);box-shadow:0 0 12px rgba(181,104,74,.4);}
+.step-line{
+  position:absolute;left:22px;top:36px;bottom:-1px;
+  width:1px;background:linear-gradient(to bottom,rgba(181,104,74,.25),transparent);
+}
+.step:last-child .step-line{display:none;}
+.step-num{
+  font-family:var(--serif);font-size:12px;font-weight:400;
+  color:rgba(181,104,74,.38);letter-spacing:.06em;padding-top:4px;position:relative;z-index:1;
+}
+.step h4{font-family:var(--caps);font-size:12.5px;letter-spacing:.14em;color:var(--cream);margin-bottom:9px;font-weight:500;}
+.step p{font-size:13.5px;line-height:1.75;color:rgba(250,246,242,.42);}
+
+/* ═══ GALLERY SHARED ═══ */
+.gallery-section{
+  padding:160px 80px;
+  border-top:1px solid rgba(181,104,74,.1);
+}
+.gallery-header{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:56px;align-items:end;margin-bottom:64px;
+}
+.gallery-header-right{
+  display:flex;flex-direction:column;
+  align-items:flex-end;gap:20px;
+}
+.collection-name{
+  font-family:var(--serif);font-size:clamp(11px,1vw,13px);
+  font-style:italic;color:rgba(181,104,74,.55);
+  letter-spacing:.1em;margin-bottom:6px;display:block;
+}
+
+/* Garment cards */
+.garment-card{
+  position:relative;border-radius:18px;overflow:hidden;
+  background:rgba(44,21,8,.5);cursor:none;
+}
+.garment-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,6,4,.88) 0%,rgba(10,6,4,.06) 48%,transparent 100%);
+  z-index:1;transition:opacity .5s var(--ease-lux);
+}
+.garment-card:hover::before{opacity:.65;}
+.garment-img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .9s var(--ease-lux);
+}
+.garment-card:hover .garment-img{transform:scale(1.05);}
+.garment-caption{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:28px;z-index:2;
+  transform:translateY(6px);
+  transition:transform .5s var(--ease-lux);
+}
+.garment-card:hover .garment-caption{transform:translateY(0);}
+.garment-tag{
+  display:inline-block;font-family:var(--caps);
+  font-size:8px;letter-spacing:.24em;
+  color:var(--rg-light);text-transform:uppercase;
+  margin-bottom:7px;opacity:.85;
+}
+.garment-name{
+  font-family:var(--serif);font-size:19px;
+  font-style:italic;font-weight:300;
+  color:var(--cream);line-height:1.2;
+  display:block;margin-bottom:14px;
+}
+.garment-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;letter-spacing:.1em;
+  color:rgba(250,246,242,.55);text-decoration:none;
+  transition:color .3s,gap .3s var(--ease-lux);
+  opacity:0;transition:opacity .4s var(--ease-lux),color .3s,gap .3s var(--ease-lux);
+}
+.garment-card:hover .garment-link{opacity:1;}
+.garment-link:hover{color:var(--rg-light);gap:10px;}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;inset:0;z-index:9990;
+  background:rgba(6,3,2,.97);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .5s var(--ease-lux);
+}
+.lightbox.open{opacity:1;pointer-events:all;}
+.lightbox-img{
+  max-width:90vw;max-height:86vh;
+  border-radius:16px;object-fit:contain;
+  transform:scale(.95);
+  transition:transform .5s var(--ease-spring);
+  box-shadow:0 40px 120px rgba(0,0,0,.7);
+}
+.lightbox.open .lightbox-img{transform:scale(1);}
+.lightbox-close{
+  position:absolute;top:28px;right:32px;
+  background:rgba(181,104,74,.12);border:1px solid rgba(181,104,74,.3);
+  border-radius:50%;width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;font-size:18px;color:var(--cream);
+  transition:background .3s var(--ease-lux);
+}
+.lightbox-close:hover{background:rgba(181,104,74,.3);}
+.lightbox-caption{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  text-align:center;
+}
+.lightbox-caption span{
+  font-family:var(--serif);font-size:18px;
+  font-style:italic;color:rgba(250,246,242,.65);
+}
+
+/* Bridal grid */
+.bridal-grid{
+  display:grid;
+  grid-template-columns:1.35fr .85fr .85fr;
+  grid-template-rows:auto;gap:14px;
+}
+.bridal-card-main{grid-row:span 2;}
+.bridal-card-main .garment-img{min-height:620px;object-position:top;}
+.bridal-card-sm .garment-img{height:300px;object-position:top center;}
+
+/* Senator grid */
+.senator-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:18px;position:relative;
+}
+.senator-card{
+  position:relative;border-radius:18px;overflow:hidden;
+  background:rgba(44,21,8,.5);cursor:none;
+  transition:transform .6s var(--ease-lux),z-index 0s;
+}
+.senator-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,6,4,.9) 0%,rgba(10,6,4,.04) 55%,transparent 100%);
+  z-index:1;
+}
+.senator-card:nth-child(1){transform:rotate(-.5deg);}
+.senator-card:nth-child(2){transform:translateY(-16px) rotate(.25deg);}
+.senator-card:nth-child(3){transform:rotate(.45deg);}
+.senator-card:hover{transform:rotate(0deg) translateY(-6px) scale(1.01)!important;z-index:2;}
+.senator-card .garment-img{height:500px;object-position:top center;}
+.senator-card .garment-caption{padding:22px;}
+
+/* Suits grid */
+.suits-grid{
+  display:grid;
+  grid-template-columns:.85fr .85fr 1.3fr;
+  gap:14px;
+}
+.suits-card .garment-img{height:480px;object-position:top center;}
+
+/* ═══ INSTAGRAM ═══ */
+.instagram-section{
+  padding:160px 80px;
+  background:rgba(181,104,74,.02);
+  border-top:1px solid rgba(181,104,74,.1);
+}
+.instagram-header{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:end;margin-bottom:64px;
+}
+.instagram-handle{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--sans);font-size:13px;
+  color:rgba(181,104,74,.7);letter-spacing:.06em;
+  text-decoration:none;
+  transition:color .3s var(--ease-lux);
+}
+.instagram-handle:hover{color:var(--rg-light);}
+.instagram-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto;gap:12px;
+}
+.ig-card{
+  position:relative;border-radius:16px;overflow:hidden;
+  background:rgba(44,21,8,.6);cursor:none;
+  border:1px solid rgba(181,104,74,.08);
+}
+.ig-card::before{
+  content:'';position:absolute;inset:0;
+  background:rgba(10,6,4,.55);z-index:1;
+  opacity:0;transition:opacity .4s var(--ease-lux);
+}
+.ig-card:hover::before{opacity:1;}
+.ig-placeholder{
+  width:100%;height:220px;
+  background:linear-gradient(135deg,rgba(44,21,8,.8),rgba(122,61,34,.2));
+  display:flex;align-items:center;justify-content:center;
+}
+.ig-placeholder span{
+  font-family:var(--serif);font-size:48px;
+  font-style:italic;font-weight:300;
+  color:rgba(181,104,74,.18);user-select:none;
+}
+.ig-overlay{
+  position:absolute;inset:0;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .4s var(--ease-lux);
+}
+.ig-card:hover .ig-overlay{opacity:1;}
+.ig-icon{
+  width:44px;height:44px;
+  border:1px solid rgba(250,246,242,.4);
+  border-radius:50%;display:flex;
+  align-items:center;justify-content:center;
+  font-size:18px;
+}
+.ig-card:nth-child(1){grid-row:span 2;}
+.ig-card:nth-child(1) .ig-placeholder{height:452px;}
+
+/* ═══ TESTIMONIALS ═══ */
+.testimonials{
+  padding:160px 80px;
+  border-top:1px solid rgba(181,104,74,.1);
+}
+.testimonials-header{text-align:center;margin-bottom:72px;}
+.testimonials-header .section-label{justify-content:center;}
+.testimonials-header .section-label::after{display:none;}
+.testi-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;
+}
+.testi-card{
+  padding:2px;background:rgba(181,104,74,.06);
+  border-radius:18px;
+  transition:background .4s var(--ease-lux);
+}
+.testi-card:nth-child(2){
+  background:rgba(181,104,74,.14);
+  transform:translateY(-10px);
+}
+.testi-card:hover{background:rgba(181,104,74,.18);}
+.testi-inner{
+  background:rgba(10,6,4,.9);border-radius:16px;
+  padding:36px 32px;height:100%;
+}
+.testi-stars{display:flex;gap:3px;margin-bottom:24px;}
+.star{color:var(--rg-light);font-size:11px;}
+.testi-quote{
+  font-family:var(--serif);font-size:19px;
+  font-style:italic;font-weight:300;
+  line-height:1.65;color:var(--cream);
+  margin-bottom:28px;opacity:.88;
+}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(181,104,74,.18);
+  border:1px solid rgba(181,104,74,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--caps);font-size:12px;
+  color:var(--rg-light);font-weight:600;flex-shrink:0;
+}
+.testi-name{font-family:var(--caps);font-size:11.5px;letter-spacing:.12em;color:var(--cream);font-weight:500;display:block;margin-bottom:3px;}
+.testi-role{font-size:11.5px;color:rgba(250,246,242,.32);}
+
+/* ═══ FAQ ═══ */
+.faq{
+  padding:160px 80px;
+  background:rgba(181,104,74,.02);
+  border-top:1px solid rgba(181,104,74,.1);
+}
+.faq-header{text-align:center;margin-bottom:72px;}
+.faq-header .section-label{justify-content:center;}
+.faq-header .section-label::after{display:none;}
+.faq-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0 60px;align-items:start;
+}
+.faq-item{
+  border-bottom:1px solid rgba(181,104,74,.1);
+  overflow:hidden;
+}
+.faq-question{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:24px 0;cursor:none;gap:20px;
+  transition:color .3s var(--ease-lux);
+}
+.faq-question:hover{color:var(--rg-light);}
+.faq-q-text{
+  font-family:var(--caps);font-size:12.5px;
+  letter-spacing:.1em;color:var(--cream);
+  font-weight:500;line-height:1.4;
+  transition:color .3s var(--ease-lux);
+}
+.faq-question:hover .faq-q-text{color:var(--rg-light);}
+.faq-icon{
+  width:28px;height:28px;flex-shrink:0;
+  border:1px solid rgba(181,104,74,.3);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--rg);
+  transition:transform .4s var(--ease-lux),background .3s,border-color .3s;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(181,104,74,.1);border-color:var(--rg);}
+.faq-answer{
+  font-size:14px;line-height:1.82;
+  color:rgba(250,246,242,.48);
+  max-height:0;overflow:hidden;
+  transition:max-height .5s var(--ease-lux),padding .4s var(--ease-lux);
+  padding-bottom:0;
+}
+.faq-item.open .faq-answer{max-height:300px;padding-bottom:24px;}
+
+/* ═══ CTA ═══ */
+.cta-section{
+  padding:160px 80px;text-align:center;
+  border-top:1px solid rgba(181,104,74,.1);
+  position:relative;overflow:hidden;
+}
+.cta-bg-1{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:680px;height:680px;border:1px solid rgba(181,104,74,.055);border-radius:50%;pointer-events:none;animation:breathe 8s ease-in-out infinite;}
+.cta-bg-2{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:440px;height:440px;border:1px solid rgba(181,104,74,.09);border-radius:50%;pointer-events:none;animation:breathe 8s ease-in-out infinite .5s;}
+.cta-section .section-label{justify-content:center;}
+.cta-section .section-label::after{display:none;}
+.cta-h2{
+  font-family:var(--serif);
+  font-size:clamp(46px,6vw,86px);
+  font-weight:300;line-height:1.0;
+  letter-spacing:-.022em;color:var(--cream);
+  margin-bottom:24px;position:relative;z-index:1;
+}
+.cta-h2 em{font-style:italic;color:var(--rg-light);}
+.cta-desc{
+  font-size:15.5px;line-height:1.78;
+  color:rgba(250,246,242,.42);max-width:480px;
+  margin:0 auto 52px;position:relative;z-index:1;
+}
+.cta-btn-wrap{
+  position:relative;z-index:1;
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+}
+
+/* ═══ FOOTER ═══ */
+footer{
+  padding:80px 80px 36px;
+  border-top:1px solid rgba(181,104,74,.1);
+}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr;
+  gap:60px;margin-bottom:56px;
+}
+.footer-logo-img{height:76px;width:auto;margin-bottom:20px;display:block;}
+.footer-tagline{font-family:var(--caps);font-size:8.5px;letter-spacing:.28em;color:rgba(181,104,74,.45);text-transform:uppercase;margin-bottom:20px;}
+.footer-desc{font-size:13px;line-height:1.82;color:rgba(250,246,242,.3);max-width:280px;}
+.footer-col h4{font-family:var(--caps);font-size:9.5px;letter-spacing:.22em;color:rgba(181,104,74,.65);text-transform:uppercase;margin-bottom:22px;font-weight:500;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col a{font-size:13px;color:rgba(250,246,242,.32);text-decoration:none;transition:color .3s var(--ease-lux);}
+.footer-col a:hover{color:var(--rg-light);}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(181,104,74,.07);padding-top:24px;
+}
+.footer-copy{font-size:11.5px;color:rgba(250,246,242,.18);}
+.footer-social{display:flex;gap:10px;align-items:center;}
+.social-btn{
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(181,104,74,.18);
+  background:rgba(181,104,74,.04);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;cursor:none;
+  transition:all .4s var(--ease-lux);
+}
+.social-btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(181,104,74,.2);}
+.social-btn.wa:hover{background:#25D366;border-color:#25D366;}
+.social-btn.fb:hover{background:#1877F2;border-color:#1877F2;}
+.social-btn.ig:hover{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border-color:#e6683c;}
+.social-btn.em:hover{background:var(--rg);border-color:var(--rg);}
+.social-btn.xx:hover{background:#000;border-color:#555;}
+.social-btn svg{width:16px;height:16px;fill:rgba(250,246,242,.5);transition:fill .3s;}
+.social-btn:hover svg{fill:#fff;}
+
+/* WhatsApp FAB */
+.whatsapp-fab{
+  position:fixed;bottom:32px;right:32px;
+  width:56px;height:56px;border-radius:50%;
+  background:#25D366;z-index:888;cursor:none;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 32px rgba(37,211,102,.35);
+  transition:all .4s var(--ease-spring);
+  text-decoration:none;
+  animation:fabPulse 3s ease-in-out infinite;
+}
+.whatsapp-fab:hover{transform:scale(1.12);box-shadow:0 12px 48px rgba(37,211,102,.5);}
+.whatsapp-fab svg{width:26px;height:26px;fill:#fff;}
+.fab-tooltip{
+  position:absolute;right:68px;
+  background:rgba(10,6,4,.9);
+  border:1px solid rgba(181,104,74,.2);
+  border-radius:8px;padding:8px 14px;
+  font-family:var(--sans);font-size:12px;
+  color:var(--cream);white-space:nowrap;
+  opacity:0;pointer-events:none;
+  transform:translateX(8px);
+  transition:all .3s var(--ease-lux);
+}
+.whatsapp-fab:hover .fab-tooltip{opacity:1;transform:translateX(0);}
+
+/* ═══ SCROLL REVEAL ═══ */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease-reveal),transform .9s var(--ease-reveal);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:.1s;}
+.reveal-delay-2{transition-delay:.2s;}
+.reveal-delay-3{transition-delay:.3s;}
+.reveal-delay-4{transition-delay:.4s;}
+.reveal-delay-5{transition-delay:.5s;}
+
+/* ═══ KEYFRAMES ═══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
+@keyframes float{0%,100%{transform:rotate(180deg) translateY(0);}50%{transform:rotate(180deg) translateY(-8px);}}
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes scrollPulse{0%{opacity:1;transform:scaleY(1) translateY(0);}100%{opacity:0;transform:scaleY(.3) translateY(18px);}}
+@keyframes logoPulse{0%,100%{filter:drop-shadow(0 0 30px rgba(181,104,74,.18));}50%{filter:drop-shadow(0 0 60px rgba(181,104,74,.38));}}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1;}50%{transform:translate(-50%,-50%) scale(1.04);opacity:.6;}}
+@keyframes fabPulse{0%,100%{box-shadow:0 8px 32px rgba(37,211,102,.35);}50%{box-shadow:0 8px 48px rgba(37,211,102,.55),0 0 0 8px rgba(37,211,102,.08);}}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr 1fr;}
+  .testi-card:nth-child(3){display:none;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .journey-timeline{grid-template-columns:repeat(3,1fr);}
+  .journey-timeline::before{display:none;}
+  .faq-grid{grid-template-columns:1fr;}
+  .bridal-grid{grid-template-columns:1fr 1fr;}
+  .bridal-card-main{grid-row:span 1;}
+  .bridal-card-main .garment-img{min-height:340px;}
+  .senator-grid{grid-template-columns:1fr 1fr;}
+  .senator-card:nth-child(3){display:none;}
+  .suits-grid{grid-template-columns:1fr 1fr;}
+  .atelier-grid{grid-template-columns:1fr;}
+  .instagram-grid{grid-template-columns:1fr 1fr;}
+  .ig-card:nth-child(1) .ig-placeholder{height:220px;}
+  .ig-card:nth-child(1){grid-row:span 1;}
+  .founder-grid{grid-template-columns:1fr;gap:60px;}
+}
+@media(max-width:768px){
+  body{cursor:auto;}
+  .cursor,.cursor-ring{display:none;}
+  nav{padding:8px 8px 8px 16px;}
+  .nav-links{display:none;}
+  .nav-cta{display:none;}
+  .nav-toggle{display:flex;}
+  .hero{grid-template-columns:1fr;min-height:100dvh;}
+  .hero-left{padding:110px 24px 60px;}
+  .hero-right{display:none;}
+  .hero-scroll{left:24px;}
+  .philosophy{grid-template-columns:1fr;gap:56px;padding:100px 24px;}
+  .founder{padding:100px 24px;}
+  .stats{padding:80px 24px;}
+  .stats-inner{grid-template-columns:1fr 1fr;gap:10px;}
+  .services{padding:100px 24px;}
+  .services-header{grid-template-columns:1fr;gap:20px;}
+  .services-grid{grid-template-columns:1fr;}
+  .atelier{padding:100px 24px;}
+  .journey-timeline{grid-template-columns:1fr 1fr;}
+  .process{padding:100px 24px;}
+  .process-inner{grid-template-columns:1fr;gap:56px;}
+  .gallery-section{padding:100px 24px;}
+  .gallery-header{grid-template-columns:1fr;gap:24px;}
+  .gallery-header-right{align-items:flex-start;}
+  .bridal-grid{grid-template-columns:1fr;}
+  .bridal-card-main .garment-img{min-height:420px;}
+  .bridal-card-sm .garment-img{height:280px;}
+  .senator-grid{grid-template-columns:1fr;}
+  .senator-card{transform:none!important;}
+  .senator-card:nth-child(3){display:block;}
+  .senator-card .garment-img{height:360px;}
+  .suits-grid{grid-template-columns:1fr;}
+  .suits-card .garment-img{height:340px;}
+  .instagram-section{padding:100px 24px;}
+  .instagram-header{grid-template-columns:1fr;gap:24px;}
+  .instagram-grid{grid-template-columns:1fr 1fr;}
+  .testimonials{padding:100px 24px;}
+  .testi-grid{grid-template-columns:1fr;}
+  .testi-card:nth-child(2){transform:none;}
+  .testi-card:nth-child(3){display:block;}
+  .faq{padding:100px 24px;}
+  .cta-section{padding:100px 24px;}
+  footer{padding:60px 24px 28px;}
+  .footer-top{grid-template-columns:1fr;gap:36px;}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center;}
+  .journey-timeline{grid-template-columns:1fr 1fr;}
+  .whatsapp-fab{bottom:24px;right:24px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;}
+  .reveal{opacity:1;transform:none;}
+}
+
+/* Performance: font-display swap */
+@font-face { font-display: swap; }
+
+/* ═══ HERO EDITORIAL IMAGE PANEL ═══ */
+.hero-right {
+  position: relative;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hero-editorial-wrap {
+  position: relative;
+  width: min(400px, 86%);
+  height: min(580px, 88dvh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: heroEditorialFloat 7s ease-in-out infinite;
+}
+
+@keyframes heroEditorialFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* Arch / organic frame */
+.hero-editorial-frame {
+  position: absolute;
+  inset: 0;
+  border-radius: 200px 200px 140px 140px;
+  overflow: hidden;
+  border: 1.5px solid rgba(181,104,74,.28);
+  box-shadow:
+    0 0 0 8px rgba(10,6,4,.9),
+    0 0 0 9.5px rgba(181,104,74,.14),
+    0 32px 80px rgba(0,0,0,.55),
+    0 8px 24px rgba(181,104,74,.12);
+  background: rgba(44,21,8,.6);
+}
+
+.hero-editorial-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transform: scale(1.03);
+  transition: transform 8s ease;
+  animation: heroImgReveal 1.4s var(--ease-reveal) .5s both;
+}
+
+@keyframes heroImgReveal {
+  from { opacity: 0; transform: scale(1.08); }
+  to   { opacity: 1; transform: scale(1.03); }
+}
+
+/* Frosted glass caption bar */
+.hero-editorial-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 18px;
+  right: 18px;
+  background: rgba(10,6,4,.62);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(181,104,74,.18);
+  border-radius: 14px;
+  padding: 13px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.hero-editorial-caption-text {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(250,246,242,.78);
+  line-height: 1.3;
+}
+.hero-editorial-caption-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rg);
+  flex-shrink: 0;
+  animation: fabPulse 2.5s ease-in-out infinite;
+}
+
+/* Floating luxury badge */
+.hero-editorial-badge {
+  position: absolute;
+  top: 36px;
+  right: -14px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(160deg, rgba(181,104,74,.95), rgba(122,61,34,.9));
+  border: 1px solid rgba(250,246,242,.15);
+  border-radius: 100px;
+  padding: 16px 11px;
+  box-shadow: 0 8px 32px rgba(181,104,74,.35), inset 0 1px 0 rgba(255,255,255,.1);
+  animation: heroEditorialFloat 5s ease-in-out infinite .8s;
+}
+.hero-editorial-badge span {
+  font-family: var(--caps);
+  font-size: 7.5px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(250,246,242,.9);
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+.hero-editorial-badge-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(250,246,242,.25);
+}
+
+/* Corner accent: rotating text ring */
+.hero-editorial-ring {
+  position: absolute;
+  bottom: -24px;
+  left: -24px;
+  width: 100px;
+  height: 100px;
+  animation: spin 24s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+.hero-editorial-ring text {
+  font-family: var(--caps);
+  font-size: 8px;
+  letter-spacing: .2em;
+  fill: rgba(181,104,74,.45);
+}
+.hero-editorial-ring-dot {
+  position: absolute;
+  bottom: -24px;
+  left: -24px;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Ambient glow behind the whole panel */
+.hero-editorial-glow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(181,104,74,.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Parallax JS hook ── */
+.hero-editorial-wrap { will-change: transform; }
+
+/* Responsive overrides */
+@media (max-width: 1024px) {
+  .hero-editorial-wrap {
+    width: min(320px, 80%);
+    height: min(460px, 70dvh);
+  }
+}
+@media (max-width: 768px) {
+  .hero-right {
+    display: flex !important;
+    height: auto;
+    padding: 48px 24px 64px;
+    justify-content: center;
+  }
+  .hero-editorial-wrap {
+    width: min(280px, 78vw);
+    height: min(380px, 60vw);
+  }
+  .hero-editorial-badge { right: -10px; top: 20px; }
+}
+</style>
+</head>
+<body><div id="introLoadingScreen" style="position:fixed;inset:0;z-index:10000;background:#0A0604;display:flex;align-items:center;justify-content:center;transition:opacity 0.8s ease-out;">
+<video autoplay="" id="introVideo" muted="" playsinline="" preload="auto" src="assets/Hailuo_Video_Create%20an%20ultra-premium%20luxury_518325263888330753.mp4" style="width:100%;height:100%;object-fit:cover;"></video>
+</div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div id="progress-bar"></div>
+<!-- MOBILE NAV OVERLAY -->
+<div aria-label="Mobile navigation" class="mobile-nav" id="mobileNav" role="navigation">
+<a href="#philosophy" onclick="closeMobileNav()">Philosophy</a>
+<a href="#services" onclick="closeMobileNav()">Services</a>
+<a href="#atelier" onclick="closeMobileNav()">Atelier</a>
+<a href="#bridal" onclick="closeMobileNav()">Bridal</a>
+<a href="#senator" onclick="closeMobileNav()">Senator</a>
+<a href="#suits" onclick="closeMobileNav()">Suits</a>
+<a href="#contact" onclick="closeMobileNav()">Commission</a>
+</div>
+<!-- NAV -->
+<nav aria-label="Main navigation" id="mainNav" role="navigation">
+<a aria-label="Mimi's Stitches home" class="nav-logo-wrap" href="#">
+<img alt="Mimi's Stitches logo" class="nav-logo" fetchpriority="high" loading="eager" src="assets/mimis-stitches-logo-transparent.png"/>
+</a>
+<ul class="nav-links">
+<li><a href="#philosophy">Philosophy</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#atelier">Atelier</a></li>
+<li><a href="#bridal">Bridal</a></li>
+<li><a href="#senator">Senator</a></li>
+<li><a href="#suits">Suits</a></li>
+<li><a class="nav-cta" href="#contact">Commission a Piece</a></li>
+</ul>
+<button aria-label="Toggle mobile menu" class="nav-toggle" id="navToggle">
+<span></span><span></span><span></span>
+</button>
+</nav>
+<!-- HERO -->
+<main>
+<section aria-label="Mimi's Stitches — Bespoke Tailoring &amp; Couture Design" class="hero">
+<div aria-hidden="true" class="hero-ambience"></div>
+<div aria-hidden="true" class="hero-grid-lines"></div>
+<div aria-hidden="true" class="hero-vline"></div>
+<div class="hero-left">
+<span class="eyebrow">Est. 2018   Bespoke Couture</span>
+<h1 class="hero-h1">Crafted<br/>for the<br/><em>rare few</em></h1>
+<p class="hero-sub">Where every stitch<br/>is a signature.</p>
+<p class="hero-desc">Mimi's Stitches is an atelier of precision and passion — creating garments that transcend fashion and become heirlooms. Each piece begins with a conversation and ends with a transformation.</p>
+<div class="btn-row">
+<a class="btn-primary" href="#contact">
+        Commission a Piece
+        <span aria-hidden="true" class="btn-icon">↗</span>
+</a>
+<button class="btn-ghost" onclick="document.getElementById('philosophy').scrollIntoView({behavior:'smooth'})">
+<span aria-hidden="true">↓</span> Discover our story
+      </button>
+</div>
+</div>
+<div aria-hidden="false" class="hero-right">
+<div aria-hidden="true" class="hero-editorial-glow"></div>
+<div class="hero-editorial-wrap" id="heroEditorialWrap">
+<!-- Organic arch frame -->
+<div class="hero-editorial-frame">
+<!-- PHOTOGRAPHY SPECIFICATION:
+         Shot type: Full-length editorial portrait, fashion campaign style
+         Subject: Woman in a couture gown (bridal or evening wear) OR a tailored suit
+         Composition: Subject centred, full body from crown to floor
+         Lighting style: Soft diffused luxury lighting, warm highlights
+         Backdrop: Neutral cream or moody dark studio
+         Aspect ratio: 3:4 (portrait)
+         Editorial direction: Vogue / Elie Saab campaign aesthetic
+    -->
+<img alt="Couture bridal gown — Mimi's Stitches Bespoke Tailoring &amp; Design" class="hero-editorial-image" fetchpriority="high" loading="eager" src="assets/mimis-stitches-f8832cb976cf.jpg"/>
+<!-- Frosted caption bar -->
+<div aria-hidden="true" class="hero-editorial-caption">
+<span class="hero-editorial-caption-text">The Eternal Grace Collection</span>
+<span class="hero-editorial-caption-dot"></span>
+</div>
+</div>
+<!-- Floating luxury badge (right side) -->
+<div aria-hidden="true" class="hero-editorial-badge">
+<span>Handcrafted</span>
+<div class="hero-editorial-badge-divider"></div>
+<span>Bespoke</span>
+<div class="hero-editorial-badge-divider"></div>
+<span>Couture</span>
+</div>
+<!-- Rotating text ring (bottom-left) -->
+<svg aria-hidden="true" class="hero-editorial-ring" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<path d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" id="erp"></path>
+<text><textpath href="#erp">ATELIER · MIMI'S STITCHES · COUTURE · BESPOKE · </textpath></text>
+</svg>
+<div aria-hidden="true" class="hero-editorial-ring-dot">
+<div class="circle-dot"></div>
+</div>
+</div>
+<!-- Scroll indicator -->
+<div class="hero-scroll">
+<div class="scroll-line"></div>
+<span class="scroll-text">Scroll</span>
+</div>
+</div>
+</section>
+<!-- MARQUEE -->
+<div aria-hidden="true" class="marquee-wrap">
+<div class="marquee-track">
+<span class="marquee-item">Bespoke Tailoring<span class="marquee-dot"></span></span>
+<span class="marquee-item">Couture Design<span class="marquee-dot"></span></span>
+<span class="marquee-item">Bridal Excellence<span class="marquee-dot"></span></span>
+<span class="marquee-item">Heritage Craft<span class="marquee-dot"></span></span>
+<span class="marquee-item">Senator Wear<span class="marquee-dot"></span></span>
+<span class="marquee-item">Precision Fitting<span class="marquee-dot"></span></span>
+<span class="marquee-item">Luxury Fabrics<span class="marquee-dot"></span></span>
+<span class="marquee-item">Artisan Detail<span class="marquee-dot"></span></span>
+<span class="marquee-item">Bespoke Tailoring<span class="marquee-dot"></span></span>
+<span class="marquee-item">Couture Design<span class="marquee-dot"></span></span>
+<span class="marquee-item">Bridal Excellence<span class="marquee-dot"></span></span>
+<span class="marquee-item">Heritage Craft<span class="marquee-dot"></span></span>
+<span class="marquee-item">Senator Wear<span class="marquee-dot"></span></span>
+<span class="marquee-item">Precision Fitting<span class="marquee-dot"></span></span>
+<span class="marquee-item">Luxury Fabrics<span class="marquee-dot"></span></span>
+<span class="marquee-item">Artisan Detail<span class="marquee-dot"></span></span>
+</div>
+</div>
+<!-- PHILOSOPHY -->
+<section aria-label="Our Philosophy" class="philosophy" id="philosophy">
+<div>
+<div class="section-label reveal">Our Philosophy</div>
+<h2 class="section-h2 reveal reveal-delay-1">Clothing is<br/>not worn.<br/>It is <em>inhabited.</em></h2>
+<div class="section-body reveal reveal-delay-2" style="max-width:440px;">
+<p>At Mimi's Stitches, we believe the finest garments are not purchased — they are co-authored. Every consultation is a dialogue between craft and character, between needle and narrative.</p>
+<p style="margin-top:18px;">We work exclusively with a select clientele who understand that true luxury is not the price tag — it is the irreplaceable feeling of wearing something made precisely, and only, for you.</p>
+</div>
+</div>
+<div>
+<div class="pillar reveal reveal-delay-1">
+<div class="pillar-num">01</div>
+<div><h3>The Individual Comes First</h3><p>Every measurement, every consultation, every stitch is calibrated to the unique architecture of your body and the singular expression of your identity.</p></div>
+</div>
+<div class="pillar reveal reveal-delay-2">
+<div class="pillar-num">02</div>
+<div><h3>Fabric as Language</h3><p>We source exclusively from heritage mills in Italy, England, and France — selecting materials that age with elegance and carry stories of their own.</p></div>
+</div>
+<div class="pillar reveal reveal-delay-3">
+<div class="pillar-num">03</div>
+<div><h3>Craft Without Compromise</h3><p>From hand-stitched buttonholes to canvassed construction, every technique employed is the one that produces the finest possible result — not the fastest.</p></div>
+</div>
+</div>
+</section>
+<!-- FOUNDER STORY -->
+<section aria-label="Founder Story" class="founder" id="founder">
+<div aria-hidden="true" class="founder-bg-letter">M</div>
+<div class="founder-grid">
+<div class="founder-portrait-wrap reveal">
+<div class="founder-portrait-frame">
+<div aria-hidden="true" class="founder-portrait-placeholder">M</div>
+</div>
+<div aria-hidden="true" class="founder-portrait-accent"></div>
+<div aria-hidden="true" class="founder-portrait-accent-2"></div>
+</div>
+<div class="founder-content">
+<div class="section-label reveal">The Maker Behind The Mark</div>
+<div class="founder-name-treatment reveal reveal-delay-1">Mimi</div>
+<div class="founder-title reveal reveal-delay-1">Founder &amp; Creative Director</div>
+<p class="founder-story reveal reveal-delay-2">"I did not choose tailoring. Tailoring chose me — in a room full of fabric, with a needle in my hand and a vision I could not yet name."</p>
+<p class="founder-body reveal reveal-delay-3">Over twelve years, Mimi has built an atelier rooted in a singular conviction: that clothing is the most intimate form of architecture. Every garment she designs begins with a question — not "what do you want to wear?" but "who do you want to become?"<br/><br/>Trained in classical European tailoring techniques and deeply informed by African textile heritage, Mimi occupies a rare intersection: rigorous craft and fearless design. Her work has dressed brides, executives, cultural icons, and those who simply refuse to be dressed by anyone else.</p>
+<div class="founder-signature reveal reveal-delay-4">Mimi</div>
+</div>
+</div>
+</section>
+<!-- STATS -->
+<section aria-label="Atelier Statistics" class="stats" id="stats">
+<div style="text-align:center; margin-bottom: 60px;">
+<div class="section-label reveal" style="justify-content:center;">Atelier Milestones</div>
+<h2 class="section-h2 reveal reveal-delay-1" style="font-size: clamp(32px, 4vw, 48px);">Trusted By Those Who<br/><em>Value Craftsmanship</em></h2>
+</div>
+<div class="stats-inner">
+<div class="stat-card reveal">
+<div class="stat-inner">
+<span class="stat-num" data-suffix="+" data-target="15">0</span>
+<span class="stat-label">Years of Experience</span>
+<span class="stat-desc">A decade and a half of uncompromising precision.</span>
+</div>
+</div>
+<div class="stat-card reveal reveal-delay-1">
+<div class="stat-inner">
+<span class="stat-num" data-suffix="+" data-target="500">0</span>
+<span class="stat-label">Bespoke Garments Delivered</span>
+<span class="stat-desc">Each piece an unrepeatable commission.</span>
+</div>
+</div>
+<div class="stat-card reveal reveal-delay-2">
+<div class="stat-inner">
+<span class="stat-num" data-suffix="+" data-target="120">0</span>
+<span class="stat-label">Bridal Commissions</span>
+<span class="stat-desc">Crafted for the most unforgettable moments.</span>
+</div>
+</div>
+<div class="stat-card reveal reveal-delay-3">
+<div class="stat-inner">
+<span class="stat-num" data-suffix="%" data-target="85">0</span>
+<span class="stat-label">Repeat Clientele</span>
+<span class="stat-desc">A testament to enduring quality and trust.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SERVICES -->
+<section aria-label="Our Services" class="services" id="services">
+<div class="services-header">
+<div>
+<div class="section-label reveal">What We Create</div>
+<h2 class="section-h2 reveal reveal-delay-1">Precision in<br/>every <em>discipline.</em></h2>
+</div>
+<p class="section-body reveal reveal-delay-2" style="align-self:end;max-width:380px;">Each service is delivered with the same uncompromising attention to detail — whether you are commissioning a single statement piece or an entire wardrobe.</p>
+</div>
+<div class="services-grid">
+<div class="svc-card featured reveal">
+<div class="svc-inner">
+<div><div class="svc-icon">✦</div><div class="svc-title">Full Bespoke Suits</div><p class="svc-desc">Fully canvassed, hand-cut garments built from over 80 hours of craft. The pinnacle of tailoring — structured precisely to your posture, proportions, and personality.</p></div>
+<a class="svc-link" href="#contact">Commission a piece ↗</a>
+<div aria-hidden="true" class="svc-bg">S</div>
+</div>
+</div>
+<div class="svc-card reveal reveal-delay-1">
+<div class="svc-inner">
+<div><div class="svc-icon">◇</div><div class="svc-title">Bridal Couture</div><p class="svc-desc">A gown designed around your vision and your form. From initial sketch to final fitting, your wedding dress becomes a singular work of wearable art.</p></div>
+<a class="svc-link" href="#contact">Begin your journey ↗</a>
+<div aria-hidden="true" class="svc-bg">B</div>
+</div>
+</div>
+<div class="svc-card reveal reveal-delay-2">
+<div class="svc-inner">
+<div><div class="svc-icon">◈</div><div class="svc-title">Precision Alterations</div><p class="svc-desc">A loved garment, restored or reimagined. We approach alterations with the same reverence as new commissions — making the beloved feel new again.</p></div>
+<a class="svc-link" href="#contact">Book an assessment ↗</a>
+<div aria-hidden="true" class="svc-bg">A</div>
+</div>
+</div>
+<div class="svc-card reveal reveal-delay-1">
+<div class="svc-inner">
+<div><div class="svc-icon">❋</div><div class="svc-title">Evening &amp; Occasion Wear</div><p class="svc-desc">Gowns and ensembles that command every room they enter. Designed for the moments that matter most, and the memories that last longest.</p></div>
+<a class="svc-link" href="#contact">Explore possibilities ↗</a>
+<div aria-hidden="true" class="svc-bg">E</div>
+</div>
+</div>
+<div class="svc-card reveal reveal-delay-2">
+<div class="svc-inner">
+<div><div class="svc-icon">⬡</div><div class="svc-title">Wardrobe Curation</div><p class="svc-desc">A holistic engagement for the discerning client — building a coherent, considered wardrobe from the inside out, piece by deliberate piece.</p></div>
+<a class="svc-link" href="#contact">Schedule a consult ↗</a>
+<div aria-hidden="true" class="svc-bg">W</div>
+</div>
+</div>
+<div class="svc-card reveal reveal-delay-3">
+<div class="svc-inner">
+<div><div class="svc-icon">◉</div><div class="svc-title">Senator &amp; African Design</div><p class="svc-desc">Heritage wear elevated to couture standard. Custom senator pieces, agbada commissions, and Afro-contemporary designs built with the same precision as our European tailoring.</p></div>
+<a class="svc-link" href="#contact">Discuss your brief ↗</a>
+<div aria-hidden="true" class="svc-bg">C</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ATELIER EXPERIENCE -->
+<section aria-label="Visit the Atelier" class="atelier" id="atelier">
+<div class="atelier-header">
+<div class="section-label reveal">The Atelier Experience</div>
+<h2 class="section-h2 reveal reveal-delay-1" style="text-align:center;">Enter a world of<br/><em>appointment-only</em> luxury.</h2>
+<p class="section-body reveal reveal-delay-2" style="max-width:520px;margin:0 auto;text-align:center;">Every visit to our atelier is a private, unhurried experience. No walk-ins. No queues. Only you, your vision, and the craftsperson who will bring it to life.</p>
+</div>
+<div class="atelier-grid">
+<div class="atelier-visual reveal">
+<div class="atelier-placeholder">The<br/>Atelier</div>
+<div class="atelier-tag">By Appointment Only</div>
+</div>
+<div class="atelier-content reveal reveal-delay-1">
+<blockquote class="atelier-quote">"Our atelier is not a shop. It is a private studio where your garment is born — from conversation to creation."</blockquote>
+<div class="atelier-features">
+<div class="atelier-feat">
+<div class="feat-dot"></div>
+<div class="feat-text"><strong>Private Consultations</strong>A dedicated session with our founder — no interruptions, no pressure.</div>
+</div>
+<div class="atelier-feat">
+<div class="feat-dot"></div>
+<div class="feat-text"><strong>Fabric Selection Studio</strong>Browse our curated library of heritage fabrics sourced from mills across three continents.</div>
+</div>
+<div class="atelier-feat">
+<div class="feat-dot"></div>
+<div class="feat-text"><strong>Precision Fitting Rooms</strong>Three fittings minimum — each one a refinement session until perfection is achieved.</div>
+</div>
+<div class="atelier-feat">
+<div class="feat-dot"></div>
+<div class="feat-text"><strong>Pattern Archive</strong>Your measurements and pattern are stored permanently — every future commission begins from a place of already knowing you.</div>
+</div>
+</div>
+</div>
+</div>
+<div class="journey-timeline">
+<div class="journey-step reveal">
+<div class="journey-node">✦</div>
+<div class="journey-step-title">Consultation</div>
+<div class="journey-step-desc">A private conversation about your vision, occasion, and identity.</div>
+<span aria-hidden="true" class="journey-arrow">→</span>
+</div>
+<div class="journey-step reveal reveal-delay-1">
+<div class="journey-node">◇</div>
+<div class="journey-step-title">Design</div>
+<div class="journey-step-desc">Sketches and concepts developed collaboratively until the vision is clear.</div>
+<span aria-hidden="true" class="journey-arrow">→</span>
+</div>
+<div class="journey-step reveal reveal-delay-2">
+<div class="journey-node">◈</div>
+<div class="journey-step-title">Fabric Selection</div>
+<div class="journey-step-desc">Materials chosen from our heritage mill library — shown, explained, felt.</div>
+<span aria-hidden="true" class="journey-arrow">→</span>
+</div>
+<div class="journey-step reveal reveal-delay-3">
+<div class="journey-node">❋</div>
+<div class="journey-step-title">First Fitting</div>
+<div class="journey-step-desc">The basted shell is fitted — structure and proportion assessed.</div>
+<span aria-hidden="true" class="journey-arrow">→</span>
+</div>
+<div class="journey-step reveal reveal-delay-4">
+<div class="journey-node">⬡</div>
+<div class="journey-step-title">Refinement</div>
+<div class="journey-step-desc">Every seam, every detail adjusted until the garment is irreproachable.</div>
+<span aria-hidden="true" class="journey-arrow">→</span>
+</div>
+<div class="journey-step reveal reveal-delay-5">
+<div class="journey-node">◉</div>
+<div class="journey-step-title">Final Delivery</div>
+<div class="journey-step-desc">Your garment is delivered with care instructions and your pattern on file.</div>
+</div>
+</div>
+</section>
+<!-- PROCESS -->
+<section aria-label="Our Process" class="process" id="process">
+<div class="process-inner">
+<div>
+<div class="section-label reveal">The Process</div>
+<h2 class="section-h2 reveal reveal-delay-1">From first<br/>word to<br/><em>final stitch.</em></h2>
+<p class="section-body reveal reveal-delay-2" style="margin-top:24px;">Every commission follows a considered sequence — unhurried, collaborative, and centered entirely on you.</p>
+</div>
+<div class="process-steps">
+<div class="step reveal">
+<div class="step-dot"></div><div class="step-num">01</div>
+<div><h4>The Consultation</h4><p>A private appointment to discuss your vision, occasion, lifestyle, and aesthetic identity. This is a conversation — not a sales encounter.</p></div>
+<div aria-hidden="true" class="step-line"></div>
+</div>
+<div class="step reveal reveal-delay-1">
+<div class="step-dot"></div><div class="step-num">02</div>
+<div><h4>Measurement &amp; Fabric Selection</h4><p>Precise measurements taken across 24 reference points. Fabrics selected from our curated mill library — shown and explained in detail.</p></div>
+<div aria-hidden="true" class="step-line"></div>
+</div>
+<div class="step reveal reveal-delay-2">
+<div class="step-dot"></div><div class="step-num">03</div>
+<div><h4>Pattern &amp; Construction</h4><p>A unique pattern drafted for your body. The garment is cut and constructed by hand — canvas floating free, seams pressed and shaped.</p></div>
+<div aria-hidden="true" class="step-line"></div>
+</div>
+<div class="step reveal reveal-delay-3">
+<div class="step-dot"></div><div class="step-num">04</div>
+<div><h4>The Fittings</h4><p>Two to three fittings ensure the garment moves with you — not on you. Every adjustment made with surgical precision until the fit is irreproachable.</p></div>
+<div aria-hidden="true" class="step-line"></div>
+</div>
+<div class="step reveal reveal-delay-4">
+<div class="step-dot"></div><div class="step-num">05</div>
+<div><h4>Delivery &amp; Legacy</h4><p>Your garment is delivered with care instructions and a record of your pattern — so every future commission begins from a place of already knowing you.</p></div>
+</div>
+</div>
+</div>
+</section>
+<!-- BRIDAL COUTURE -->
+<section aria-label="Bridal Couture Collection" class="gallery-section" id="bridal">
+<div class="gallery-header">
+<div>
+<span class="collection-name reveal">The Eternal Grace Collection</span>
+<div class="section-label reveal">Bridal Couture</div>
+<h2 class="section-h2 reveal reveal-delay-1">Gowns for<br/>the <em>unforgettable.</em></h2>
+</div>
+<div class="gallery-header-right reveal reveal-delay-2">
+<p class="section-body" style="text-align:right;max-width:420px;font-style:italic;">
+                "A celebration of timeless femininity, crafted for moments that deserve to be remembered forever."
+                <br/><br/>
+                Each gown in The Eternal Grace Collection is an architectural marvel of lace, silk, and intention. Designed to exist nowhere else in the world but on you.
+            </p>
+<a class="btn-primary" href="#contact" style="font-size:9.5px;">Begin Your Bridal Journey <span aria-hidden="true" class="btn-icon">↗</span></a>
+</div>
+</div>
+<!-- PHOTOGRAPHY SPECIFICATION:
+             Shot type: Full-length editorial portraits
+             Composition: Elegant posing, showcasing silhouette and train
+             Lighting style: Soft luxury lighting, diffused highlights
+             Aspect ratio: 3:4 and 9:16 vertical focus
+             Editorial direction: Neutral luxury backdrop, focus on timeless femininity
+        -->
+<div class="bridal-grid">
+<div class="garment-card bridal-card-main reveal" data-img="assets/mimis-stitches-346e062eed4c.jpg" data-name="The Crystal Sovereign" onclick="openLightbox(this)">
+<img alt="Crystal beaded high-neck ball gown — Mimi's Stitches Bridal Couture" class="garment-img" decoding="async" loading="lazy" src="assets/mimis-stitches-f8832cb976cf.jpg"/>
+<div class="garment-caption">
+<span class="garment-tag">Bridal Couture · Signature Piece</span>
+<span class="garment-name">The Crystal Sovereign</span>
+<a class="garment-link" href="#contact">Enquire about this piece ↗</a>
+</div>
+</div>
+<div class="garment-card bridal-card-sm reveal reveal-delay-1" data-img="assets/mimis-stitches-ac514bccd0e4.jpg" data-name="The Botanical Veil" onclick="openLightbox(this)">
+<img alt="Lace ball gown with cathedral train — Mimi's Stitches Bridal" class="garment-img" decoding="async" loading="lazy" src="assets/mimis-stitches-ac0426e9cd37.jpg"/>
+<div class="garment-caption">
+<span class="garment-tag">Bridal Couture</span>
+<span class="garment-name">The Botanical Veil</span>
+<a class="garment-link" href="#contact">Enquire ↗</a>
+</div>
+</div>
+<div class="garment-card bridal-card-sm reveal reveal-delay-2" data-img="assets/Elegant%20Navy%20Blue%20O-Neck%20Sequined%20Appliques%20Long%20Sleeves%20Quinceanera%20Evening%20Dress%20Ball%20Gown%20Floor%20Length%20Princess%20Prom%20Dress%20-%20US%2016%20_%20Custom%20Color(Special%20instructions%20for%20seller).jpg" data-name="The Pearl Illusion" onclick="openLightbox(this)">
+<img alt="Pearl-beaded high neck bridal gown — Mimi's Stitches" class="garment-img" decoding="async" loading="lazy" src="assets/Elegant%20Navy%20Blue%20O-Neck%20Sequined%20Appliques%20Long%20Sleeves%20Quinceanera%20Evening%20Dress%20Ball%20Gown%20Floor%20Length%20Princess%20Prom%20Dress%20-%20US%2016%20_%20Custom%20Color(Special%20instructions%20for%20seller).jpg"/>
+<div class="garment-caption">
+<span class="garment-tag">Bridal Couture</span>
+<span class="garment-name">The Pearl Illusion</span>
+<a class="garment-link" href="#contact">Enquire ↗</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SENATOR & AFRICAN WEAR -->
+<section aria-label="Senator &amp; African Wear Collection" class="gallery-section" id="senator" style="background:rgba(181,104,74,.018);">
+<div class="gallery-header">
+<div>
+<span class="collection-name reveal">The Heritage Collection</span>
+<div class="section-label reveal">Senator &amp; African Wear</div>
+<h2 class="section-h2 reveal reveal-delay-1">Heritage<br/>worn with <em>authority.</em></h2>
+</div>
+<div class="gallery-header-right reveal reveal-delay-2">
+<p class="section-body" style="text-align:right;max-width:420px;font-style:italic;">
+                "A narrative of modern African elegance and cultural identity."
+                <br/><br/>
+                Precision tailoring meets contemporary sophistication. We redefine the classic Senator aesthetic for the global luxury stage, honouring tradition without compromising modern refinement.
+            </p>
+<a class="btn-primary" href="#contact" style="font-size:9.5px;">Discuss Your Vision <span aria-hidden="true" class="btn-icon">↗</span></a>
+</div>
+</div>
+<!-- PHOTOGRAPHY SPECIFICATION:
+             Shot type: Mid-shot to full-length power poses
+             Composition: Strong geometric lines, confident posture
+             Lighting style: High-contrast cinematic lighting
+             Aspect ratio: 3:4 portrait
+             Editorial direction: Modern African elegance, regal and authoritative
+        -->
+<div class="senator-grid">
+<div class="senator-card reveal" data-img="assets/mimis-stitches-346e062eed4c.jpg" data-name="The Geometric Agbada" onclick="openLightbox(this)">
+<img alt="White senator agbada with geometric embroidery — Mimi's Stitches" class="garment-img" decoding="async" loading="lazy" src="assets/mimis-stitches-c42529245ade.jpg"/>
+<div class="garment-caption">
+<span class="garment-tag">Senator Wear · Premium</span>
+<span class="garment-name">The Geometric Agbada</span>
+<a class="garment-link" href="#contact">Commission this piece ↗</a>
+</div>
+</div>
+<div class="senator-card reveal reveal-delay-1" data-img="assets/mimis-stitches-ac514bccd0e4.jpg" data-name="The Crystal Senator" onclick="openLightbox(this)">
+<img alt="White senator with gold crystal embroidery — Mimi's Stitches" class="garment-img" decoding="async" loading="lazy" src="assets/mimis-stitches-ede34fda22e3.jpg"/>
+<div class="garment-caption">
+<span class="garment-tag">Senator Wear</span>
+<span class="garment-name">The Crystal Senator</span>
+<a class="garment-link" href="#contact">Commission this piece ↗</a>
+</div>
+</div>
+<div class="senator-card reveal reveal-delay-2" data-img="assets/mimis-stitches-ac514bccd0e4.jpg" data-name="The Charcoal Heritage" onclick="openLightbox(this)">
+<img alt="White agbada with geometric embroidery — Mimi's Stitches Heritage Collection" class="garment-img" decoding="async" loading="lazy" src="assets/mimis-stitches-1614072ad73a.jpg"/>
+<div class="garment-caption">
+<span class="garment-tag">Senator Wear</span>
+<span class="garment-name">The Charcoal Heritage</span>
+<a class="garment-link" href="#contact">Commission this piece ↗</a>
+</div>
+</div>
+</div>
+</section>
+<!-- MEN'S SUITS -->
+<section aria-label="Men's Bespoke Suits Collection" class="gallery-section" id="suits">
+<div class="gallery-header">
+<div>
+<span class="collection-name reveal">The Modern Legacy Collection</span>
+<div class="section-label reveal">Bespoke Suits</div>
+<h2 class="section-h2 reveal reveal-delay-1">Cut for<br/>those who <em>command.</em></h2>
+</div>
+<div class="gallery-header-right reveal reveal-delay-2">
+<p class="section-body" style="text-align:right;max-width:420px;font-style:italic;">
+                "For the visionary and the bold. Constructed for commanding presence."
+                <br/><br/>
+                A suit from Mimi's Stitches is an architecture of power. We merge classic British tailoring techniques with razor-sharp modern silhouettes, cut exclusively for your bearing.
+            </p>
+<a class="btn-primary" href="#contact" style="font-size:9.5px;">Commission a Bespoke Piece <span aria-hidden="true" class="btn-icon">↗</span></a>
+</div>
+</div>
+<!-- PHOTOGRAPHY SPECIFICATION:
+             Shot type: Detailed close-ups and three-quarter editorial shots
+             Composition: Focus on lapel roll, shoulder structure, and fabric drape
+             Lighting style: Crisp, sharp luxury lighting
+             Aspect ratio: Square (1:1) and Vertical (4:5)
+             Editorial direction: Sophisticated, intellectual, sharp
+        -->
+<div class="suits-grid">
+<div class="garment-card suits-card reveal" data-img="assets/mimis-stitches-346e062eed4c.jpg" data-name="The Camel Commander" onclick="openLightbox(this)">
+<img alt="Camel double breasted slim fit suit — Mimi's Stitches" class="garment-img" decoding="async" loading="lazy" src="assets/mimis-stitches-346e062eed4c.jpg"/>
+<div class="garment-caption">
+<span class="garment-tag">Bespoke Suits</span>
+<span class="garment-name">The Camel Commander</span>
+<a class="garment-link" href="#contact">Enquire ↗</a>
+</div>
+</div>
+<div class="garment-card suits-card reveal reveal-delay-1" data-img="assets/mimis-stitches-346e062eed4c.jpg" data-name="The Silver Chain" onclick="openLightbox(this)">
+<img alt="Grey double breasted suit with chain detail — Mimi's Stitches" class="garment-img" decoding="async" loading="lazy" src="assets/mimis-stitches-758b09d287fe.jpg"/>
+<div class="garment-caption">
+<span class="garment-tag">Bespoke Suits</span>
+<span class="garment-name">The Silver Chain</span>
+<a class="garment-link" href="#contact">Enquire ↗</a>
+</div>
+</div>
+<div class="garment-card suits-card reveal reveal-delay-2" data-img="assets/mimis-stitches-758b09d287fe.jpg" data-name="The Pinstripe Authority" onclick="openLightbox(this)">
+<img alt="Grey double-breasted suit with chain detail — Mimi's Stitches" class="garment-img" decoding="async" loading="lazy" src="assets/mimis-stitches-ac514bccd0e4.jpg"/>
+<div class="garment-caption">
+<span class="garment-tag">Bespoke Suits · Feature</span>
+<span class="garment-name">The Pinstripe Authority</span>
+<a class="garment-link" href="#contact">Commission this piece ↗</a>
+</div>
+</div>
+</div>
+</section>
+<!-- INSTAGRAM SHOWCASE -->
+<section aria-label="Instagram Gallery" class="instagram-section" id="instagram">
+<div class="instagram-header">
+<div>
+<div class="section-label reveal">From The Atelier</div>
+<h2 class="section-h2 reveal reveal-delay-1">Behind the<br/><em>needle.</em></h2>
+</div>
+<div class="gallery-header-right reveal reveal-delay-1">
+<p class="section-body" style="text-align:right;max-width:320px;">A window into the atelier — the fabric choices, the fittings, the finished pieces, and the moments in between.</p>
+<a class="instagram-handle" href="https://instagram.com/mimisstitches" rel="noopener" target="_blank">
+<svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewbox="0 0 24 24" width="18"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r="1" stroke="none"></circle></svg>
+        @mimisstitches
+      </a>
+</div>
+</div>
+<div class="instagram-grid">
+<!-- PHOTOGRAPHY SPECIFICATION:
+             Shot type: Behind-the-scenes, fabric details, candid atelier moments
+             Aspect ratio: Mixed masonry (1:1, 4:5, 16:9 vertical)
+             Editorial direction: Authentic luxury, showcasing the process
+        -->
+<a class="ig-card reveal" href="#" style="grid-row: span 2; display: block; text-decoration: none;">
+<div class="ig-placeholder" style="height: 100%;"><img alt="Behind the seams" decoding="async" loading="lazy" src="assets/Luxury%20stitched%20with%20love%20%F0%9F%A4%8D.jpg" style="width:100%; height:100%; object-fit:cover;"/></div>
+<div class="ig-overlay">
+<span class="btn-primary" style="padding: 12px 24px;">Discover</span>
+</div>
+</a>
+<a class="ig-card reveal reveal-delay-1" href="#" style="display: block; text-decoration: none;">
+<div class="ig-placeholder" style="height: 250px;"><img alt="The atelier at work" decoding="async" loading="lazy" src="assets/mimis-stitches-c16ae3d1f65c.jpg" style="width:100%; height:100%; object-fit:cover;"/></div>
+<div class="ig-overlay">
+<span class="btn-primary" style="padding: 12px 24px;">Behind The Seams</span>
+</div>
+</a>
+<a class="ig-card reveal reveal-delay-2" href="#" style="display: block; text-decoration: none;">
+<div class="ig-placeholder" style="height: 250px;"><img alt="Finished craftsmanship" decoding="async" loading="lazy" src="assets/mimis-stitches-ac514bccd0e4.jpg" style="width:100%; height:100%; object-fit:cover;"/></div>
+<div class="ig-overlay">
+<span class="btn-primary" style="padding: 12px 24px;">The Atelier</span>
+</div>
+</a>
+</div>
+</section>
+<!-- TESTIMONIALS -->
+<section aria-label="Client Stories" class="testimonials" id="testimonials">
+<div class="testimonials-header">
+<div class="section-label reveal" style="justify-content:center;">Client Success Stories</div>
+<h2 class="section-h2 reveal reveal-delay-1" style="text-align:center;">Journeys of<br/><em>Transformation.</em></h2>
+</div>
+<div class="testi-grid">
+<article class="testi-card reveal" style="grid-column: span 3;">
+<div class="testi-inner" style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center;">
+<div>
+<span class="collection-name">Bridal Journey</span>
+<h3 style="font-family: var(--serif); font-size: 28px; color: var(--rg-light); font-weight: 300; margin-bottom: 20px;">The Transatlantic Gown</h3>
+<div class="testi-author">
+<div aria-hidden="true" class="testi-avatar">S</div>
+<div>
+<span class="testi-name">Sarah M.</span>
+<span class="testi-role">Destination Wedding, Lake Como</span>
+</div>
+</div>
+</div>
+<div style="font-size: 14.5px; line-height: 1.8; color: rgba(250,246,242,.7);">
+<p style="margin-bottom: 12px;"><strong style="color:var(--cream);font-family:var(--caps);font-size:10px;letter-spacing:0.1em;">The Problem:</strong> Sarah required a lightweight, breathable gown that could survive a 12-hour flight without creasing, yet possessed the volume of a traditional ballgown.</p>
+<p style="margin-bottom: 12px;"><strong style="color:var(--cream);font-family:var(--caps);font-size:10px;letter-spacing:0.1em;">The Consultation:</strong> Over a virtual session, we selected a rare silk-blend mikado that holds structure while resisting wrinkles.</p>
+<p style="margin-bottom: 12px;"><strong style="color:var(--cream);font-family:var(--caps);font-size:10px;letter-spacing:0.1em;">The Process:</strong> Three toile fittings via express international shipping ensured the bodice was perfectly sculpted to her torso.</p>
+<p><strong style="color:var(--cream);font-family:var(--caps);font-size:10px;letter-spacing:0.1em;">The Outcome:</strong> She stepped off the plane and straight into the fitting room—the gown required zero pressing. Absolute perfection on the shores of Como.</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- FAQ -->
+<section aria-label="Frequently Asked Questions" class="faq" id="faq">
+<div class="faq-header">
+<div class="section-label reveal">Everything You Need to Know</div>
+<h2 class="section-h2 reveal reveal-delay-1" style="text-align:center;">Your questions,<br/><em>answered.</em></h2>
+</div>
+<div class="faq-grid">
+<div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<span class="faq-q-text">How does the consultation process work?</span>
+<div class="faq-icon">+</div>
+</div>
+<div class="faq-answer">Our consultations are private, appointment-only sessions held at the atelier. We begin with a conversation about your vision, occasion, and aesthetic identity — no pressure, no sales agenda. The consultation typically lasts 60–90 minutes and forms the creative foundation of your commission.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<span class="faq-q-text">What is the pricing structure?</span>
+<div class="faq-icon">+</div>
+</div>
+<div class="faq-answer">Pricing is determined by garment complexity, fabric selection, and production time. Each commission is quoted individually after the initial consultation — this ensures you receive an accurate, transparent figure with no hidden costs. Bridal gowns, bespoke suits, and alteration projects are each priced differently. Contact us for a consultation to discuss your specific requirements.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<span class="faq-q-text">How long does production take?</span>
+<div class="faq-icon">+</div>
+</div>
+<div class="faq-answer">Standard bespoke commissions require 6–10 weeks from confirmation to delivery. Bridal gowns require a minimum of 12–16 weeks to allow for multiple fittings and handwork. We recommend initiating your commission as early as possible — rush timelines are accommodated selectively and subject to availability.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<span class="faq-q-text">How early should bridal orders be placed?</span>
+<div class="faq-icon">+</div>
+</div>
+<div class="faq-answer">We recommend placing bridal orders a minimum of 5–6 months before the wedding date. This allows sufficient time for design development, fabric procurement, construction, and multiple fittings without any compromise to the work. For particularly complex gowns, 8–10 months is advised.</div>
+</div>
+</div>
+<div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<span class="faq-q-text">Can I request completely custom designs?</span>
+<div class="faq-icon">+</div>
+</div>
+<div class="faq-answer">Every commission at Mimi's Stitches is custom by definition. We do not work from catalogues or pre-set designs — your garment is conceived, designed, and constructed entirely around your requirements. You may bring reference images, sketches, or simply a feeling, and we will build from there.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<span class="faq-q-text">Do you handle alterations on existing garments?</span>
+<div class="faq-icon">+</div>
+</div>
+<div class="faq-answer">Yes — we approach alterations with the same rigour as new commissions. Whether restoring a vintage piece, adjusting a beloved garment, or reimagining something entirely, we bring craft and intention to every alteration. An assessment appointment is required before any alteration work commences.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<span class="faq-q-text">Do you work with international clients?</span>
+<div class="faq-icon">+</div>
+</div>
+<div class="faq-answer">Yes. We work with clients across Africa, Europe, and internationally. For international commissions, we conduct initial consultations virtually, arrange a dedicated in-person measurement and fitting session during your visit, and coordinate the remaining fittings around your schedule. Garments are delivered securely via courier or collected in person.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question" onclick="toggleFaq(this)">
+<span class="faq-q-text">How many clients do you accept per season?</span>
+<div class="faq-icon">+</div>
+</div>
+<div class="faq-answer">We deliberately limit new commissions each season to ensure every client receives our full, undivided attention. When our commission calendar is full, we operate a waiting list. We recommend reaching out early — particularly for bridal and major event commissions — to secure your place in our schedule.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section aria-label="Commission Your Piece" class="cta-section" id="contact">
+<div aria-hidden="true" class="cta-bg-1"></div>
+<div aria-hidden="true" class="cta-bg-2"></div>
+<div class="section-label reveal" style="justify-content:center;">Begin The Journey</div>
+<h2 class="cta-h2 reveal reveal-delay-1">Commission<br/><em>Your</em> Piece</h2>
+<p class="cta-desc reveal reveal-delay-2">Our atelier accepts a limited number of bespoke commissions each season to ensure absolute dedication to your garment. Please provide details about your vision.</p>
+<div class="reveal reveal-delay-3" style="max-width: 800px; margin: 0 auto; text-align: left; background: rgba(10,6,4,0.8); padding: 48px; border: 1px solid rgba(181,104,74,0.15); border-radius: 24px;">
+<form action="mailto:hello@mimisstitches.com" enctype="text/plain" method="POST" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label style="font-family: var(--caps); font-size: 10px; letter-spacing: 0.1em; color: rgba(250,246,242,0.6);">Full Name</label>
+<input name="Name" required="" style="background: rgba(250,246,242,0.03); border: 1px solid rgba(181,104,74,0.2); padding: 16px; border-radius: 8px; color: var(--cream); font-family: var(--sans); font-size: 14px; outline: none;" type="text"/>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label style="font-family: var(--caps); font-size: 10px; letter-spacing: 0.1em; color: rgba(250,246,242,0.6);">Email Address</label>
+<input name="Email" required="" style="background: rgba(250,246,242,0.03); border: 1px solid rgba(181,104,74,0.2); padding: 16px; border-radius: 8px; color: var(--cream); font-family: var(--sans); font-size: 14px; outline: none;" type="email"/>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label style="font-family: var(--caps); font-size: 10px; letter-spacing: 0.1em; color: rgba(250,246,242,0.6);">Project Category</label>
+<select name="Category" style="background: rgba(10,6,4,1); border: 1px solid rgba(181,104,74,0.2); padding: 16px; border-radius: 8px; color: var(--cream); font-family: var(--sans); font-size: 14px; outline: none; appearance: none;">
+<option value="Bridal Couture">The Eternal Grace (Bridal)</option>
+<option value="Men's Bespoke Suit">The Modern Legacy (Bespoke Suit)</option>
+<option value="Senator / African">The Heritage (Senator / African)</option>
+<option value="Evening Gown">Evening Gown</option>
+<option value="Other">Other Commission</option>
+</select>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<label style="font-family: var(--caps); font-size: 10px; letter-spacing: 0.1em; color: rgba(250,246,242,0.6);">Preferred Timeline</label>
+<input name="Timeline" placeholder="e.g. Wedding Date or Event Date" style="background: rgba(250,246,242,0.03); border: 1px solid rgba(181,104,74,0.2); padding: 16px; border-radius: 8px; color: var(--cream); font-family: var(--sans); font-size: 14px; outline: none;" type="text"/>
+</div>
+<div style="grid-column: span 2; display: flex; flex-direction: column; gap: 8px;">
+<label style="font-family: var(--caps); font-size: 10px; letter-spacing: 0.1em; color: rgba(250,246,242,0.6);">Consultation Preference</label>
+<select name="Preference" style="background: rgba(10,6,4,1); border: 1px solid rgba(181,104,74,0.2); padding: 16px; border-radius: 8px; color: var(--cream); font-family: var(--sans); font-size: 14px; outline: none; appearance: none;">
+<option value="In-Person Atelier">In-Person Atelier Appointment</option>
+<option value="Virtual Consultation">Virtual Consultation (International Client)</option>
+</select>
+</div>
+<div style="grid-column: span 2; display: flex; flex-direction: column; gap: 8px;">
+<label style="font-family: var(--caps); font-size: 10px; letter-spacing: 0.1em; color: rgba(250,246,242,0.6);">Project Details &amp; Vision</label>
+<textarea name="Details" placeholder="Describe your dream garment, materials you admire, and the feeling you wish to evoke..." rows="4" style="background: rgba(250,246,242,0.03); border: 1px solid rgba(181,104,74,0.2); padding: 16px; border-radius: 8px; color: var(--cream); font-family: var(--sans); font-size: 14px; outline: none; resize: vertical;"></textarea>
+</div>
+<div style="grid-column: span 2; text-align: center; margin-top: 16px;">
+<button class="btn-primary" style="cursor: pointer;" type="submit">
+                    Submit Inquiry
+                    <span class="btn-icon">↗</span>
+</button>
+</div>
+</form>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer role="contentinfo">
+<div class="footer-top">
+<div>
+<img alt="Mimi's Stitches logo" class="footer-logo-img" decoding="async" loading="lazy" src="assets/mimis-stitches-logo-transparent.png"/>
+<div class="footer-tagline">Bespoke Tailoring &amp; Design</div>
+<p class="footer-desc">An atelier of precision and passion — creating garments that transcend fashion and become part of your personal history.</p>
+</div>
+<div class="footer-col">
+<h4>Services</h4>
+<ul>
+<li><a href="#services">Bespoke Suits</a></li>
+<li><a href="#bridal">Bridal Couture</a></li>
+<li><a href="#senator">Senator Wear</a></li>
+<li><a href="#services">Evening Wear</a></li>
+<li><a href="#services">Wardrobe Curation</a></li>
+<li><a href="#services">Alterations</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Atelier</h4>
+<ul>
+<li><a href="#philosophy">Our Philosophy</a></li>
+<li><a href="#founder">Our Founder</a></li>
+<li><a href="#atelier">The Atelier</a></li>
+<li><a href="#process">The Process</a></li>
+<li><a href="#testimonials">Client Stories</a></li>
+<li><a href="#contact">Book a Consultation</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span class="footer-copy">© 2025 Mimi's Stitches. All rights reserved.</span>
+<div aria-label="Follow Mimi's Stitches on social media" class="footer-social">
+<a aria-label="WhatsApp" class="social-btn wa" href="https://wa.me/27000000000" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</a>
+<a aria-label="Facebook" class="social-btn fb" href="https://facebook.com/mimisstitches" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
+</a>
+<a aria-label="Instagram" class="social-btn ig" href="https://instagram.com/mimisstitches" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a aria-label="Email" class="social-btn em" href="mailto:hello@mimisstitches.com">
+<svg viewbox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
+</a>
+<a aria-label="X (Twitter)" class="social-btn xx" href="https://x.com/mimisstitches" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.264 5.635 5.9-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+<!-- LIGHTBOX -->
+<div aria-label="Image lightbox" aria-modal="true" class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog">
+<button aria-label="Close lightbox" class="lightbox-close" onclick="closeLightbox()">✕</button>
+<img alt="" class="lightbox-img" decoding="async" id="lightboxImg" loading="lazy" src=""/>
+<div class="lightbox-caption"><span id="lightboxCaption"></span></div>
+</div>
+<!-- WHATSAPP FAB -->
+<a aria-label="Chat on WhatsApp" class="whatsapp-fab" href="https://wa.me/27000000000" rel="noopener" target="_blank">
+<svg viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+<span class="fab-tooltip">Chat on WhatsApp</span>
+</a>
+<script>
+// ── Cursor
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',(e)=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+document.querySelectorAll('a,button,.garment-card,.senator-card,.ig-card,.svc-card,.stat-card,.testi-card,.pillar,.step,.faq-question').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('expand');ring.classList.add('expand');});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('expand');ring.classList.remove('expand');});
+});
+
+// ── Progress bar
+const pb = document.getElementById('progress-bar');
+window.addEventListener('scroll',()=>{
+  const pct = (window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  pb.style.width=pct+'%';
+},{passive:true});
+
+// ── Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>60);
+},{passive:true});
+
+// ── Mobile nav
+const toggle = document.getElementById('navToggle');
+const mobileNav = document.getElementById('mobileNav');
+toggle.addEventListener('click',()=>{
+  toggle.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open')?'hidden':'';
+});
+function closeMobileNav(){
+  toggle.classList.remove('open');
+  mobileNav.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ── Scroll reveals
+const reveals = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}})},
+  {threshold:.1,rootMargin:'0px 0px -36px 0px'});
+reveals.forEach(el=>revObs.observe(el));
+
+// ── Animated counters
+function animateCounter(el){
+  const target = +el.dataset.target;
+  const suffix = el.dataset.suffix||'';
+  const duration = 2000;
+  const start = performance.now();
+  function update(now){
+    const elapsed = now - start;
+    const progress = Math.min(elapsed/duration,1);
+    const eased = 1 - Math.pow(1-progress,3);
+    el.textContent = Math.round(eased*target) + suffix;
+    if(progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const counterObs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){animateCounter(e.target);counterObs.unobserve(e.target);}})},
+  {threshold:.5});
+document.querySelectorAll('.stat-num[data-target]').forEach(el=>counterObs.observe(el));
+
+// ── FAQ accordion
+function toggleFaq(btn){
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+
+// ── Lightbox
+function openLightbox(card){
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  const cap = document.getElementById('lightboxCaption');
+  img.src = card.dataset.img||card.querySelector('img').src;
+  img.alt = card.dataset.name||'';
+  cap.textContent = card.dataset.name||'';
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape') closeLightbox();});
+
+// --- ADVANCED LIGHTBOX EXPERINCE ---
+const lightbox = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightboxImg');
+const closeBtn = document.getElementById('lightboxClose');
+let imagesList = [];
+let currentImgIndex = 0;
+
+document.querySelectorAll('.garment-card').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+        e.preventDefault();
+        openAdvancedLightbox(card.getAttribute('data-img'));
+    });
+});
+
+function openAdvancedLightbox(imgSrc) {
+    imagesList = Array.from(document.querySelectorAll('.garment-card')).map(c => c.getAttribute('data-img'));
+    currentImgIndex = imagesList.indexOf(imgSrc);
+    lbImg.src = imgSrc;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeAdvancedLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function navigateLightbox(dir) {
+    if(imagesList.length === 0) return;
+    currentImgIndex = (currentImgIndex + dir + imagesList.length) % imagesList.length;
+    lbImg.style.opacity = 0;
+    setTimeout(() => {
+        lbImg.src = imagesList[currentImgIndex];
+        lbImg.style.opacity = 1;
+    }, 200);
+}
+
+if(closeBtn) closeBtn.addEventListener('click', closeAdvancedLightbox);
+if(lightbox) lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeAdvancedLightbox(); });
+
+document.addEventListener('keydown', (e) => {
+    if(!lightbox || !lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeAdvancedLightbox();
+    if(e.key === 'ArrowRight') navigateLightbox(1);
+    if(e.key === 'ArrowLeft') navigateLightbox(-1);
+});
+
+// Basic swipe support
+let touchStartX = 0;
+let touchEndX = 0;
+if(lightbox) {
+    lightbox.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
+    lightbox.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) navigateLightbox(1); // swipe left
+        if (touchEndX - touchStartX > 50) navigateLightbox(-1); // swipe right
+    });
+}
+
+// --- INTRO VIDEO LOGIC ---
+const introLoadingScreen = document.getElementById('introLoadingScreen');
+const introVideo = document.getElementById('introVideo');
+if(introLoadingScreen && introVideo) {
+    let dismissed = false;
+    const dismissIntro = () => {
+        if(dismissed) return;
+        dismissed = true;
+        introLoadingScreen.style.opacity = '0';
+        setTimeout(() => { introLoadingScreen.style.display = 'none'; }, 800);
+    };
+    introVideo.addEventListener('ended', dismissIntro);
+    // 8 second fallback timeout
+    setTimeout(dismissIntro, 8000);
+}
+
+  // --- INTRO VIDEO LOADING SCREEN ---
+  (function() {
+    const screen = document.getElementById('introLoadingScreen');
+    const vid = document.getElementById('introVideo');
+    if (!screen || !vid) return;
+    let gone = false;
+    function dismiss() {
+      if (gone) return;
+      gone = true;
+      screen.style.opacity = '0';
+      screen.style.pointerEvents = 'none';
+      setTimeout(function() { screen.style.display = 'none'; }, 850);
+    }
+    vid.addEventListener('ended', dismiss);
+    setTimeout(dismiss, 8000); // hard fallback
+    // Ensure body is scrollable only after intro
+    document.body.style.overflow = 'hidden';
+    vid.addEventListener('ended', function() {
+      document.body.style.overflow = '';
+    });
+    setTimeout(function() {
+      document.body.style.overflow = '';
+    }, 8100);
+  })();
+
+  // --- HERO EDITORIAL PARALLAX ---
+  (function() {
+    const wrap = document.getElementById('heroEditorialWrap');
+    if (!wrap) return;
+    let tX = 0, tY = 0, cX = 0, cY = 0;
+    document.addEventListener('mousemove', function(e) {
+      const vw = window.innerWidth, vh = window.innerHeight;
+      tX = ((e.clientX / vw) - 0.5) * 18;
+      tY = ((e.clientY / vh) - 0.5) * 12;
+    });
+    (function animate() {
+      cX += (tX - cX) * 0.06;
+      cY += (tY - cY) * 0.06;
+      // Don't override the float animation — add via CSS var
+      wrap.style.setProperty('--px', cX + 'px');
+      wrap.style.setProperty('--py', cY + 'px');
+      wrap.style.transform = 'translate(' + cX + 'px,' + cY + 'px)';
+      requestAnimationFrame(animate);
+    })();
+  })();
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"Mimi's Stitches",
+  "description":"Luxury bespoke tailoring atelier offering couture bridal gowns, bespoke suits, senator wear, and custom design. Where every stitch is a signature.",
+  "url":"https://mimisstitches.com",
+  "telephone":"+27000000000",
+  "email":"hello@mimisstitches.com",
+  "priceRange":"$$$$",
+  "sameAs":["https://instagram.com/mimisstitches","https://facebook.com/mimisstitches"],
+  "hasOfferCatalog":{
+    "@type":"OfferCatalog",
+    "name":"Bespoke Services",
+    "itemListElement":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Full Bespoke Suits"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bridal Couture"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Senator & African Wear"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Evening & Occasion Wear"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Precision Alterations"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Wardrobe Curation"}}
+    ]
+  }
+}
+</script>
+</body>
+</html>

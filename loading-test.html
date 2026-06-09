@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Test - Mimi's Stitches</title>
+    <style>
+        /* Quick test styles */
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        .loading-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0F0A07; /* warm-dark equivalent */
+            z-index: 10000;
+            display: flex;
+            align-items: center; justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .loading-logo {
+            width: 120px; height: 120px;
+            background: url('assets/mimis-stitches-logo-transparent.png') center/contain no-repeat;
+        }
+        .loading-text {
+            color: #FAF6F2; /* cream equivalent */
+            font-size: 18px;
+            font-style: italic;
+        }
+        .skip-btn {
+            position: absolute;
+            top: 20px; right: 20px;
+            padding: 8px 16px;
+            background: rgba(181,104,74,0.8);
+            color: #0F0A07;
+            border: none; border-radius: 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.14em;
+        }
+        .main-content {
+            padding: 20px;
+            background: #FAF6F2;
+            color: #2B1710;
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <button class="skip-btn" onclick="skipLoading()">Skip</button>
+        <div class="loading-logo"></div>
+        <div class="loading-text">Crafted for the rare few</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <h1>Mimi's Stitches - Loading Test</h1>
+        <p>This is a test page to verify the loading functionality works correctly.</p>
+        <p>The loading screen should appear first, then automatically disappear after 3 seconds.</p>
+        <button onclick="location.reload()">Reload Page</button>
+    </div>
+
+    <script>
+        const loadingScreen = document.getElementById('loadingScreen');
+        const mainContent = document.getElementById('mainContent');
+        
+        function hideLoading() {
+            loadingScreen.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            console.log('Loading screen hidden');
+        }
+        
+        function skipLoading() {
+            hideLoading();
+        }
+        
+        // Auto-hide after 3 seconds for testing
+        setTimeout(hideLoading, 3000);
+        
+        // Fallback after 5 seconds
+        setTimeout(() => {
+            if (!loadingScreen.classList.contains('hidden')) {
+                hideLoading();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
